@@ -18,10 +18,3 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/ola', 'HomeController@index')->name('ola');
-Route::get('/manolo', 'HomeController@index')->name('manolo');
-Route::get('/home', 'HolaLeandro@index')->name('holaLeandro');
-Route::get('/home', 'HolaDonPepito@index')->name('holaDonJose');
-Route::get('/holadonrolombo', 'HolaDonPepito@index')->name('holaDonrolombo');
-//a fer le gusta la bolita
-Route::push('/welcome', 'welcome@index')->name('welcome');
