@@ -25,6 +25,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+                <a class="navbar-brand " href="{{ url('/') }}">
+                    <img src="{{ asset('img/logo.svg') }}" class="d-inline-block" width="35" height="35" alt="">
                 </a>
                 <form class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
