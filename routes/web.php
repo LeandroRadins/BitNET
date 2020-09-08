@@ -19,4 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('temas', 'TemaController');
+Route::middleware(['auth'])->group(function () {
+    Route::resource('temas', 'TemaController');
+});

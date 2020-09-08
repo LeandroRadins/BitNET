@@ -16,6 +16,7 @@ class CreateReputacionesTable extends Migration
         Schema::create('reputaciones', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->boolean('valor')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
