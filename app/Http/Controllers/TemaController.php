@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class TemaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:temas.index')->only('index');
+        $this->middleware('can:temas.create')->only(['store', 'create']);
+        $this->middleware('can:temas.show')->only('show');
+        $this->middleware('can:temas.edit')->only(['edit', 'update']);
+        $this->middleware('can:temas.destroy')->only('destroy');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,8 @@ class TemaController extends Controller
      */
     public function index()
     {
-        //
+        $temas = Tema::all();
+        return view('tema.index', compact('temas'));
     }
 
     /**
