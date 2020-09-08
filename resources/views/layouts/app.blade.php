@@ -23,35 +23,76 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                </a>
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+        <nav class="navbar border-0 navbar-expand-md navbar-light bg-white shadow-sm ">
+            {{-- <div class="container"> --}}
+                <ul class="nav navbar-nav justify-content-start">
+                    <li class="nav-item">
+                        <a class="navbar-brand pl-5" href="{{ url('/') }}">
+                            <img src="{{ asset('img/logo.svg') }}" class="d-inline-block" width="35" height="35" alt="">
+                        </a>
+                    </li>
+                </ul>
+
+
+
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
 
+                    {{-- Boton de busqueda --}}
+                    {{-- <ul class="nav navbar-nav w-100 justify-content-center ">
+                        <li class="nav-item">
+                            <form class="form-inline ">
+                                <input class="form-control mr-sm-2 border-0 bg-light rounded-pill text-center"
+                                    type="search" placeholder="Buscar" aria-label="Search">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search"
+                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                                    <path fill-rule="evenodd"
+                                        d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                                </svg>
+                            </form>
+                        </li>
+                    </ul> --}}
+                    <ul class="nav navbar-nav w-100 justify-content-center ">
+                        <li class="nav-item">
+                            <form class="form-inline ">
+                                <div class="input-group">
+                                    <input class="form-control py-2 pl-5 rounded-pill border-0 bg-light mr-1 pr-5 text-center" type="search" placeholder="Buscar">
+                                    <span class="input-group-append">
+                                        <button class="btn text-muted rounded-pill border-0 ml-n5" type="button">
+                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search"
+                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                                            <path fill-rule="evenodd"
+                                                d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                                        </svg> 
+                                        </button>
+                                    </span>
+                                </div>
+
+
+                            </form>
+                        </li>
                     </ul>
-
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav justify-content-end">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link text-dark" href="{{ route('login') }}">Login</a>
                             </li>
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <li class="nav-item pl-3">
+                                    <a class="btn btn-primary rounded-pill px-3"
+                                        href="{{ route('register') }}">Registrarse</a>
                                 </li>
                             @endif
                         @else
@@ -62,8 +103,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                                 document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -76,7 +118,8 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
+                {{--
+            </div> --}}
         </nav>
 
         <main class="py-4">
