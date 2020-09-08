@@ -17,6 +17,9 @@ class CreatePreguntasTable extends Migration
             $table->bigIncrements('id');
             $table->string('titulo');
             $table->string('consulta');
+            $table->bigInteger('tema_id')->unsigned()->nullable();
+            $table->foreign('tema_id')->references('id')->on('temas');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
