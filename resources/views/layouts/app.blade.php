@@ -74,14 +74,14 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="{{ route('login') }}">Login</a>
+                                <a class="btn btn-primary rounded-pill px-3" href="{{ route('login') }}">Login</a>
                             </li>
-                            @if (Route::has('register'))
+                            {{-- @if (Route::has('register'))
                                 <li class="nav-item pl-3">
-                                    <a class="btn btn-primary rounded-pill px-3"
+                                    <a class=""
                                         href="{{ route('register') }}">Registrarse</a>
                                 </li>
-                            @endif
+                            @endif --}}
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

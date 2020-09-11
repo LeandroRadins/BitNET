@@ -37,7 +37,9 @@
                                 <div class="row px-3">
                                     <div class="col">
                                         <h6 class=" text-muted mb-3">Preguntas</h6>
-                                        <h5 class="">{{ count($tema->preguntas) }}</h5>
+                                        <h5 class="">asd</h5>
+                                        {{-- <h5 class="">{{ count($tema->preguntas) }}</h5>
+                                        --}}
 
                                     </div>
                                     <div class="col">
@@ -66,12 +68,14 @@
                 </div>
                 <hr>
             @endforeach
+
+            {{ $temas->links() }}
         </div>
     </div>
 
 
 
-    <table id="temas" class="table table-bordered table-striped">
+    {{-- <table id="temas" class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>id</th>
@@ -94,24 +98,24 @@
                     </td>
                     <td width="200px">
                         @can('temas.show')
-                            <a class="btn btn-info btn-sm" role="button"
-                                href="{{ route('temas.show', ['id' => $tema->id]) }}">Ver</a>
+                        <a class="btn btn-info btn-sm" role="button"
+                            href="{{ route('temas.show', ['id' => $tema->id]) }}">Ver</a>
                         @endcan
                         @can('temas.edit')
-                            <a class="btn btn-primary btn-sm" role="button"
-                                href="{{ route('temas.edit', ['id' => $tema->id]) }}">Editar</a>
+                        <a class="btn btn-primary btn-sm" role="button"
+                            href="{{ route('temas.edit', ['id' => $tema->id]) }}">Editar</a>
                         @endcan
                         @can('temas.destroy')
-                            <form action="{{ route('temas.destroy', $tema->id) }}" method="POST"
-                                onsubmit="return confirm('Desea eliminar el rol" style="display: inline-block;">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <input type="submit" class="btn btn-xs btn-danger btn-sm" value="Eliminar">
-                            </form>
+                        <form action="{{ route('temas.destroy', $tema->id) }}" method="POST"
+                            onsubmit="return confirm('Desea eliminar el rol" style="display: inline-block;">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="submit" class="btn btn-xs btn-danger btn-sm" value="Eliminar">
+                        </form>
                         @endcan
                     </td>
                 </tr>
             @endforeach
         </tbody>
-    </table>
+    </table> --}}
 @endsection
