@@ -19,6 +19,8 @@ class CreatePreguntasTable extends Migration
             $table->string('consulta');
             $table->bigInteger('tema_id')->unsigned()->nullable();
             $table->foreign('tema_id')->references('id')->on('temas');
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->softDeletes();
             $table->timestamps();
         });

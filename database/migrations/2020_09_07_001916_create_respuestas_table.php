@@ -18,6 +18,8 @@ class CreateRespuestasTable extends Migration
             $table->string('desarrollo');
             $table->bigInteger('pregunta_id')->unsigned()->nullable();
             $table->foreign('pregunta_id')->references('id')->on('preguntas');
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->softDeletes();
             $table->timestamps();
         });
