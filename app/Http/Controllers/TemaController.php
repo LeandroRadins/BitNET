@@ -34,7 +34,7 @@ class TemaController extends Controller
      */
     public function create()
     {
-        //
+        return view('tema.create');
     }
 
     /**
@@ -45,7 +45,8 @@ class TemaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Tema::create($request->all());
+        return redirect()->route('temas.index');
     }
 
     /**
@@ -56,7 +57,7 @@ class TemaController extends Controller
      */
     public function show(Tema $tema)
     {
-        //
+        return view('tema.show', compact('tema'));
     }
 
     /**
