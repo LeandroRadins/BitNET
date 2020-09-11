@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Tema;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class TemaController extends Controller
@@ -23,7 +24,12 @@ class TemaController extends Controller
      */
     public function index()
     {
-        $temas = Tema::all();
+        // $temas = Tema::all();
+        $temas = DB::table('temas')->paginate(10);
+        // return $users;
+        foreach ($temas as $key => $tema) {
+            
+        }
         return view('tema.index', compact('temas'));
     }
 
