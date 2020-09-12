@@ -22,7 +22,7 @@
 
                 <div class="card border-0 py-4">
                     <div class="card-body">
-                        <div class="row">
+                        <div class="row shadow-sm">
                             <div class="col border-primary border-right-0 border-top-0 border-bottom-0 border-left pl-4">
                                 <h4 class="pb-3 pt-1">
                                     <a class="text-decoration-none text-dark text-uppercase"
@@ -59,10 +59,11 @@
                                         <h6 class=" text-muted mb-3">Ultima Pregunta</h6>
                                         <h5 class="text-truncate" style="max-width: 350px;">Matias Nuñez: Esto es una
                                             pregunta</h5>
+                                            <br>
                                     </div>
                                 </div>
                             </div>
-                            <div class="border-right  d-flex flex-column">
+                            <div class="  d-flex flex-column">
                                 <div class="btn-group dropleft">
                                     <a class="btn " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
