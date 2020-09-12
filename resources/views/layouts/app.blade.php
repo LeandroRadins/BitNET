@@ -70,7 +70,7 @@
                         </li>
                     </ul>
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav justify-content-end">
+                    <ul class="navbar-nav justify-content-end pr-5">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -84,7 +84,7 @@
                             @endif --}}
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link h5 p-0 my-auto" href="#" role="button"
+                                <a id="navbarDropdown" class="nav-link h5 p-0 my-auto text-dark" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
