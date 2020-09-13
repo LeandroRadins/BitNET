@@ -41,7 +41,6 @@
             </button>
 
             <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
-
                 {{-- Boton de busqueda --}}
 
                 <ul class="nav navbar-nav w-100 justify-content-center ">

@@ -24,12 +24,7 @@ class TemaController extends Controller
      */
     public function index()
     {
-        // $temas = Tema::all();
-        $temas = DB::table('temas')->paginate(10);
-        // return $users;
-        // foreach ($temas as $key => $tema) {
-            
-        // }
+        $temas = Tema::all();
         return view('tema.index', compact('temas'));
     }
 
@@ -74,7 +69,7 @@ class TemaController extends Controller
      */
     public function edit(Tema $tema)
     {
-        //
+        return view('tema.edit', compact('tema'));
     }
 
     /**
@@ -86,7 +81,8 @@ class TemaController extends Controller
      */
     public function update(Request $request, Tema $tema)
     {
-        //
+        $tema->update($request->all());
+        return redirect()->route('temas.show', $tema->id);
     }
 
     /**
@@ -97,6 +93,7 @@ class TemaController extends Controller
      */
     public function destroy(Tema $tema)
     {
-        //
+        $tema->delete();
+        return redirect()->route('temas.index');
     }
 }
