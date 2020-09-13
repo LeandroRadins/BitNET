@@ -123,6 +123,30 @@
                                     &nbsp;&nbsp;&nbsp;Mi Perfil</a>
                             </li>
                             @endcan
+                            @can('users.create')
+                            <li class="nav-item  rounded-pill text-primary h5 w-75 ">
+                                <a class="nav-link text-decoration-none font-weight-bolder "
+                                    href="{{route("users.show", ['id'=>Auth::user()->id])}}">
+                                    <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-person-fill"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                    </svg>
+                                    &nbsp;&nbsp;&nbsp;Usuarios</a>
+                            </li>
+                            @endcan
+                            @can('roles.index')
+                            <li class="nav-item  rounded-pill text-primary h5 w-75 ">
+                                <a class="nav-link text-decoration-none font-weight-bolder "
+                                    href="{{route("roles.index")}}">
+                                    <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-key-fill"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                                    </svg>
+                                    &nbsp;&nbsp;&nbsp;Roles</a>
+                            </li>
+                            @endcan
                             <li class="nav-item  bg-lightpurple rounded-pill text-primary h5 w-75 ">
                                 <a class="nav-link text-decoration-none font-weight-bolder align-items-baseline"
                                     href="{{route("temas.index")}}">
