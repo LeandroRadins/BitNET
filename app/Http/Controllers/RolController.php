@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\RoleStoreRequest;
 use Caffeinated\Shinobi\Models\Role;
+use Caffeinated\Shinobi\Models\Permission;
 
 
 class RolController extends Controller
@@ -26,7 +28,8 @@ class RolController extends Controller
      */
     public function create()
     {
-        //
+        $permissions = Permission::all()->pluck('name', 'id');
+        return view('rol.create', compact('permissions'));
     }
 
     /**
@@ -35,9 +38,12 @@ class RolController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoleStoreRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $role = Role::create($validated);
+        $role->permissions()->sync($request->input('permissions', []));
+        return redirect()->route('rol.index');
     }
 
     /**

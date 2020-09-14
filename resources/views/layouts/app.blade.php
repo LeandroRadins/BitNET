@@ -11,7 +11,7 @@
     <title>@yield('title', 'BitNet')</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -33,16 +33,12 @@
                     </a>
                 </li>
             </ul>
-
-
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
                 {{-- Boton de busqueda --}}
-
                 <ul class="nav navbar-nav w-100 justify-content-center ">
                     <li class="nav-item">
                         <form class="form-inline ">
@@ -62,8 +58,6 @@
                                     </button>
                                 </span>
                             </div>
-
-
                         </form>
                     </li>
                 </ul>
@@ -104,8 +98,6 @@
             {{--
             </div> --}}
         </nav>
-
-
         <main class="py-4">
             <div class="d-flex">
                 <div class="col-3">
@@ -136,7 +128,7 @@
                             </li>
                             @endcan
                             @can('roles.index')
-                            <li class="nav-item  rounded-pill text-primary h5 w-75 ">
+                            <li class="nav-item rounded-pill text-primary h5 w-75 ">
                                 <a class="nav-link text-decoration-none font-weight-bolder "
                                     href="{{route("roles.index")}}">
                                     <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-key-fill"
@@ -183,20 +175,16 @@
                         </ul>
                     </div>
                 </div>
-
-
                 <div class="col-9 ">
                     <div class="container-fluid py-4 px-0">
                         @yield('content')
-
                     </div>
-
-
                 </div>
             </div>
 
         </main>
     </div>
+    @stack('scripts')
 </body>
 
 </html>

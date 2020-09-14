@@ -37,7 +37,7 @@
                 <td>
                     {{ $rol->name }}
                 </td>
-                <td width="auto">
+                <td>
                     {{ $rol->description }}
                 </td>
                 <td width="200px">
