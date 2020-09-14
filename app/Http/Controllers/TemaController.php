@@ -46,7 +46,7 @@ class TemaController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Tema::create($request->all());
+        $tema = Tema::create($request->all());
         return redirect()->route('temas.index');
     }
 

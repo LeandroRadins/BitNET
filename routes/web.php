@@ -21,4 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('temas', 'TemaController');
+    //Preguntas
+    Route::get('temas/{tema}/nueva_pregunta', 'PreguntaController@create')->name('preguntas.create');
+    Route::post('temas/{tema}/guardar_pregunta', 'PreguntaController@store')->name('preguntas.store');
 });

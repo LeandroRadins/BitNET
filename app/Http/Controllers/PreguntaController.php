@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tema;
 use App\Pregunta;
 use Illuminate\Http\Request;
 
@@ -22,9 +23,10 @@ class PreguntaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Tema $tema)
     {
-        //
+
+        return view('pregunta.create', compact('tema'));
     }
 
     /**
@@ -33,9 +35,15 @@ class PreguntaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Tema $tema, Request $request)
     {
-        //
+        $pregunta = new Pregunta();
+        $pregunta->titulo = $request->titulo;
+        $pregunta->consulta = $request->consulta;
+        $pregunta->user_id = Auth::user()->id;
+        $pregunta->tema_id = $tema->id;
+        $pregunta->save();
+        return redirect()->route('temas.show', $tema->id);
     }
 
     /**

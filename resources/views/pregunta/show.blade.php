@@ -11,7 +11,7 @@
                     <div class="d-flex justify-content-between">
                         <h1 class="text-uppercase">{{ $tema->nombre }}</h1>
                         <p><a class="btn border-0 btn-primary btn-lg px-4 align-middle"
-                                href="{{ route('preguntas.create', $tema->id) }}">Pregunta
+                                href="{{ route('preguntas.create') }}">Pregunta
                                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-plus align-middle"
                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -42,53 +42,6 @@
                 </span>
                 <br>
                 <br>
-
-
-                @foreach ($tema->preguntas as $pregunta)
-                <div class="card border-0">
-                    <div class="card-body">
-                        <div class="row ">
-                            <div class="col border-secondary border-right-0 border-top-0 border-bottom-0 border-left ">
-                                <h3 class="pb-3 pt-0 text-bold">
-                                    {{$pregunta->titulo}} 
-                                </h3>
-                                <div class="d-flex pb-0 ">
-                                    <img class="rounded-pill" width="50px" height="50px"
-                                        src="https://instagram.fcnq2-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/85053037_800510723776174_5894956777147323725_n.jpg?_nc_ht=instagram.fcnq2-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=-24N8TQZH24AX9zCl8v&oh=5e2a8d35280cc4f779d03ac02aace9c3&oe=5F83FA80">
-                                    <div class="col">
-                                        <span class="h5">{{$pregunta->autor}}</span>
-                                        <p class="text-muted">Hace 2 dias</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col border-left border-gray">
-
-                                <div class="row px-3">
-                                    <div class="col">
-                                        <h6 class=" text-black-50 mb-3">Respuestas</h6>
-                                        <h5 class="">29</h5>
-
-                                    </div>
-                                    <div class="col">
-                                        <h6 class=" text-black-50 mb-3 ">Actividad</h6>
-                                        <h5 class="">Hace 5 minutos.</h5>
-
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row px-3">
-                                    <div class="col">
-                                        <h6 class=" text-black-50 mb-3">Mejor Respuesta</h6>
-                                        <h5 class="text-truncate" style="max-width: 350px;">Matias Nuñez: Esto es una
-                                            pregunta</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                @endforeach
 
                 <div class="card border-0">
                     <div class="card-body">
