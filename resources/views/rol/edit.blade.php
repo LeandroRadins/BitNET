@@ -1,24 +1,28 @@
 @extends('layouts.app')
 
-@section('title', 'Nuevo Rol')
+@section('title')
+Editar {{$role->name}}
+@endsection
 
 @section('content')
 <div class="row mb-4">
     <div class="col-11">
         <div class="d-flex justify-content-start">
-            <h1>Nuevo Rol</h1>
+            <h1>Editar rol</h1>
         </div>
         <br>
         <div class="col-10 px-0">
             <div class="card border-primary border-right-0 border-top-0 border-bottom-0 border-left rounded-0">
                 <div class="card-body pr-0 mt-0 pb-0">
-                    <form action="{{ route("roles.store") }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('roles.update', [$role->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="form-group row">
                             <label class="col-3 col-form-label-lg h3" for="name">Nombre del Rol</label>
                             <div class="col-9">
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                                    name="name" aria-describedby="emailHelp" placeholder="Escriba el Nombre del Tema">
+                                    name="name" value="{{ old('name', isset($role) ? $role->name : '') }}"
+                                    placeholder="Escriba el Nombre del Tema">
                                 @error('name')
                                 <small id="emailHelp" class="px-2 form-text" style="color: red">{{$message}}</small>
                                 @enderror
@@ -28,7 +32,8 @@
                             <label class="col-3 col-form-label-lg h3" for="slug">SLUG</label>
                             <div class="col-9">
                                 <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug"
-                                    name="slug" placeholder="El SLUG se genera automaticamente">
+                                    name="slug" value="{{ old('slug', isset($role) ? $role->slug : '') }}"
+                                    placeholder="El SLUG se genera automaticamente">
                                 @error('slug')
                                 <small id="error" class="px-2 form-text" style="color: red">{{$message}}</small>
                                 @enderror
@@ -40,7 +45,7 @@
                             <div class="col-9">
                                 <textarea class="form-control @error('description') is-invalid @enderror"
                                     id="description" rows="4" name="description"
-                                    placeholder="Escriba la Descripcion del Tema"></textarea>
+                                    placeholder="Escriba la Descripcion del Tema">{{ old('description', isset($role) ? $role->description : '') }}</textarea>
                                 @error('description')
                                 <small id="error" class="px-2 form-text" style="color: red">{{$message}}</small>
                                 @enderror
@@ -67,7 +72,7 @@
                             </div>
                         </div>
                         <div class="row justify-content-end px-3 pt-3">
-                            <button type="submit" class="btn btn-primary px-4">Crear Rol</button>
+                            <button type="submit" class="btn btn-primary px-4">Editar Rol</button>
 
                         </div>
                         <hr class="mb-0 mt-4">

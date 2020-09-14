@@ -10,6 +10,16 @@ use Caffeinated\Shinobi\Models\Permission;
 
 class RolController extends Controller
 {
+
+    Public function __construct()
+    {
+        $this->middleware('can:roles.index')->only('index');
+        $this->middleware('can:roles.create')->only(['store', 'create']);
+        $this->middleware('can:roles.show')->only('show');
+        $this->middleware('can:roles.edit')->only(['edit', 'update']);
+        $this->middleware('can:roles.destroy')->only('destroy');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +53,7 @@ class RolController extends Controller
         $validated = $request->validated();
         $role = Role::create($validated);
         $role->permissions()->sync($request->input('permissions', []));
-        return redirect()->route('rol.index');
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -63,9 +73,10 @@ class RolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        //
+        $permissions = Permission::all()->pluck('name', 'id');
+        return view('rol.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -75,9 +86,12 @@ class RolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RoleStoreRequest $request,Role $role)
     {
-        //
+        $validated = $request->validated();
+        $role->update($validated);
+        $role->permissions()->sync($request->input('permissions', []));
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -86,8 +100,9 @@ class RolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        //
+        $role->delete();
+        return redirect()->route('roles.index');
     }
 }
