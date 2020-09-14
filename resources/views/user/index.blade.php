@@ -39,7 +39,7 @@
                     <td>
                         {{ $user->fechaNac }}
                     </td>
-                    <td>
+                    <td class="text-center">
                         @can('users.edit')
                         <a class="btn btn-info btn-sm" style="color: white" role="button"
                             href="{{ route('users.show', ['id' => $user->id]) }}">Ver</a>
