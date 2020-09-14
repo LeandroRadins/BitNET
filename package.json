@@ -23,5 +23,7 @@
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.12"
     },
-    "dependencies": {}
+    "dependencies": {
+        "select2": "^4.0.13"
+    }
 }
