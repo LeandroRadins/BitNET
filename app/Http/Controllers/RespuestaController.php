@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Tema;
+use App\Pregunta;
 use App\Respuesta;
 use Illuminate\Http\Request;
 
@@ -33,9 +36,14 @@ class RespuestaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Tema $tema, Pregunta $pregunta, Request $request)
     {
-        //
+        $respuesta = new Respuesta();
+        $respuesta->desarrollo = $request->desarrollo;
+        $respuesta->user_id = Auth::user()->id;
+        $respuesta->pregunta_id = $pregunta->id;
+        $respuesta->save();
+        return redirect()->back();
     }
 
     /**

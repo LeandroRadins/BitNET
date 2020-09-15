@@ -11,7 +11,7 @@
                     <div class="d-flex justify-content-between">
                         <h1 class="text-uppercase">{{ $tema->nombre }}</h1>
                         <p><a class="btn border-0 btn-primary btn-lg px-4 align-middle"
-                                href="{{ route('preguntas.create', $tema->id) }}">Pregunta
+                                href="{{ route('preguntas.create', $tema->id) }}">Consulta
                                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-plus align-middle"
                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"

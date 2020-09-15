@@ -15,4 +15,8 @@ class Respuesta extends Model
     {
         return $this->belongsTo(Pregunta::class);
     }
+    public function autor()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
