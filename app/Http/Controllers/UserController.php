@@ -8,6 +8,17 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('can:users.index')->only('index');
+        $this->middleware('can:users.create')->only(['store', 'create']);
+        $this->middleware('can:users.show')->only('show');
+        $this->middleware('can:users.edit')->only(['update', 'edit']);
+        $this->middleware('can:users.destroy')->only('destroy');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +26,10 @@ class UserController extends Controller
      */
     public function index()
     {
+        $colores = collect(['primary', 'danger', 'warning', 'info', 'dark']);
+        // dd($colores);
         $users = User::all();
-        return view('user.index', compact('users'));
+        return view('user.index', compact('users', 'colores'));
     }
 
     /**

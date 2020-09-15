@@ -14,11 +14,12 @@
         </div>
         <br>
         <br>
-        <table id="users" class="table table-bordered table-striped">
+        <table id="users" class="table table-bordered table-hover table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
+                    <th>Roles</th>
                     <th>Email</th>
                     <th>Fecha de Nacimiento</th>
                     <th>Acciones</th>
@@ -28,10 +29,16 @@
                 @foreach ($users as $user)
                 <tr>
                     <td>
-                        {{ $user->id }}
+                        <span class="black">{{ $user->id }}</span>
                     </td>
                     <td>
                         {{ $user->name }}
+                    </td>
+                    <td>
+                        @foreach($user->roles as $rol)
+                        <span class="badge badge-{{$colores[rand(0,4)]}} p-2 px-2">{{ $rol->name }}</span>
+                        {{-- Arreglar tema de los colores del badge --}}
+                        @endforeach
                     </td>
                     <td>
                         {{ $user->email }}
@@ -65,18 +72,47 @@
     </div>
 </div>
 
-
-
-
 @push('scripts')
 <script>
-    $(document).ready( function () {
-        $('#users').DataTable({
-            "language": {
-                "url": "dataTables.german.lang"
-            }
-        });
-} );
+    $(document).ready(function() 
+    {
+        var table = $('#users').DataTable(
+            {
+                "language":
+                    {
+                        "sProcessing":     "Procesando...",
+                        "sLengthMenu":     "Mostrar _MENU_ registros",
+                        "sZeroRecords":    "No se encontraron resultados",
+                        "sEmptyTable":     "Ningún dato disponible en esta tabla =(",
+                        "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                        "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                        "sInfoPostFix":    "",
+                        "sSearch":         "Buscar:",
+                        "sUrl":            "",
+                        "sInfoThousands":  ",",
+                        "sLoadingRecords": "Cargando...",
+                        "oPaginate": 
+                            {
+                                "sFirst":    "Primero",
+                                "sLast":     "Último",
+                                "sNext":     "Siguiente",
+                                "sPrevious": "Anterior"
+                            },
+                        "oAria": 
+                            {
+                                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                            },
+                        "buttons": 
+                            {
+                                "copy": "Copiar",
+                                "colvis": "Visibilidad"
+                            }
+                    }
+            });
+    });
+
 </script>
 @endpush
 
