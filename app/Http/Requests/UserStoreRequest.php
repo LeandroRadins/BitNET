@@ -27,13 +27,16 @@ class UserStoreRequest extends FormRequest
             case 'POST':
                 return [
                     'name' => 'required',
-                    'email' => 'required|email|unique:users',
+                    'email' => 'required|email|unique:users,email,NULL,id,deleted_at,NULL',
+                    //'email' => 'required|email|unique:users',
                     'password' => 'required',
                 ];
             case 'PUT':
+                $id = $this->route('user')->id;
                 return [
                     'name' => 'required',
-                    'email' => 'required|email|unique:users,email,' . $this->user->id,
+                    'email' => 'required|email|unique:users,email,{$id},id,deleted_at,NULL',
+                    //'email' => 'required|email|unique:users,email,' . $this->user->id,
                     'password' => 'required',
                 ];
             default:

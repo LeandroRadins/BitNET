@@ -62,9 +62,7 @@
                                     @endforeach
                                 </select>
                                 @error('permissions')
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    <small id="emailHelp" class="form-text text-muted">{{$message}}</small>
-                                </div>
+                                <small id="emailHelp" class="form-text text-muted">{{$message}}</small>
                                 @enderror
                             </div>
                         </div>
