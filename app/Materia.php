@@ -13,6 +13,6 @@ class Materia extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'materias_users')->withTimeStamps();
     }
 }

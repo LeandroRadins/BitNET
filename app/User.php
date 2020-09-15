@@ -44,7 +44,7 @@ class User extends Authenticatable
 
     public function materias()
     {
-        return $this->belongsToMany(Materia::class);
+        return $this->belongsToMany(Materia::class, 'materias_users')->withTimestamps();
     }
 
     public function preguntas()

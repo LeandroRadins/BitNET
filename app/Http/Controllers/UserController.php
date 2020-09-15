@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Materia;
+use App\Http\Requests\UserStoreRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Caffeinated\Shinobi\Models\Role;
 
 class UserController extends Controller
 {
@@ -27,7 +30,6 @@ class UserController extends Controller
     public function index()
     {
         $colores = collect(['primary', 'danger', 'warning', 'info', 'dark']);
-        // dd($colores);
         $users = User::all();
         return view('user.index', compact('users', 'colores'));
     }
@@ -39,18 +41,24 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all()->pluck('name', 'id');
+        $materias = Materia::all()->pluck('nombre', 'id');
+        return view('user.create', compact('roles', 'materias'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\UserStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $user = User::create($validated);
+        $user->roles()->sync($request->input('roles', []));
+        $user->materias()->sync($request->input('materias', []));
+        return redirect()->route('users.index');
     }
 
     /**
