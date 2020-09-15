@@ -38,101 +38,70 @@
 
             <div class="col px-0">
                 <span class="h2">
-                    Preguntas
+                    Consultas
                 </span>
                 <br>
                 <br>
 
 
                 @foreach ($tema->preguntas as $pregunta)
-                <div class="card border-0">
-                    <div class="card-body">
-                        <div class="row ">
-                            <div class="col border-secondary border-right-0 border-top-0 border-bottom-0 border-left ">
-                                <h3 class="pb-3 pt-0 text-bold">
-                                    {{$pregunta->titulo}} 
-                                </h3>
-                                <div class="d-flex pb-0 ">
-                                    <img class="rounded-pill" width="50px" height="50px"
-                                        src="https://instagram.fcnq2-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/85053037_800510723776174_5894956777147323725_n.jpg?_nc_ht=instagram.fcnq2-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=-24N8TQZH24AX9zCl8v&oh=5e2a8d35280cc4f779d03ac02aace9c3&oe=5F83FA80">
+                    <div class="card border-0">
+                        <div class="card-body">
+                            <div class="row shadow-sm">
+                                <div class="col border-secondary border-right-0 border-top-0 border-bottom-0 border-left ">
+                                    <h3 class="pb-3 pt-0 text-bold">
+                                        <a class="text-decoration-none text-dark "
+                                            href="{{ route('preguntas.show', ['tena' => $tema->id, 'pregunta' => $pregunta->id]) }}">
+                                            {{ $pregunta->titulo }}
+                                        </a>
+                                    </h3>
+                                    <div class="d-flex pb-0 ">
+                                        <img class="rounded-pill" width="50px" height="50px"
+                                            src="https://instagram.fcnq2-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/85053037_800510723776174_5894956777147323725_n.jpg?_nc_ht=instagram.fcnq2-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=-24N8TQZH24AX9zCl8v&oh=5e2a8d35280cc4f779d03ac02aace9c3&oe=5F83FA80">
+                                        <div class="col">
+                                            <span class="h5">{{ $pregunta->autor->name }}</span>
+                                            <p class="text-muted">{{ $pregunta->created_at->diffForHumans() }}</p>
+
+                                        </div>
+
+                                    </div>
                                     <div class="col">
-                                        <span class="h5">{{$pregunta->autor}}</span>
-                                        <p class="text-muted">Hace 2 dias</p>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas qui sit dolores
+                                        adipisci. Nemo voluptates perspiciatis beatae temporibus ad, voluptatum vero minus
+                                        modi sint culpa delectus nisi. Rerum, maxime debitis.
+                                    </div>
+                                    <br>
+                                </div>
+                                <div class="col border-left border-gray">
+
+                                    <div class="row px-3">
+                                        <div class="col">
+                                            <h6 class=" text-black-50 mb-3">Respuestas</h6>
+                                            <h5 class="">{{ count($pregunta->respuestas) }}</h5>
+
+                                        </div>
+                                        <div class="col">
+                                            <h6 class=" text-black-50 mb-3 ">Actividad</h6>
+                                            <h5 class="">Hace 5 minutos.</h5>
+
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row px-3">
+                                        <div class="col">
+                                            <h6 class=" text-black-50 mb-3">Mejor Respuesta</h6>
+                                            <h5 class="text-truncate" style="max-width: 350px;">asd</h5>
+                                            <br>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col border-left border-gray">
 
-                                <div class="row px-3">
-                                    <div class="col">
-                                        <h6 class=" text-black-50 mb-3">Respuestas</h6>
-                                        <h5 class="">29</h5>
-
-                                    </div>
-                                    <div class="col">
-                                        <h6 class=" text-black-50 mb-3 ">Actividad</h6>
-                                        <h5 class="">Hace 5 minutos.</h5>
-
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row px-3">
-                                    <div class="col">
-                                        <h6 class=" text-black-50 mb-3">Mejor Respuesta</h6>
-                                        <h5 class="text-truncate" style="max-width: 350px;">Matias Nuñez: Esto es una
-                                            pregunta</h5>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-
                     </div>
-                </div>
                 @endforeach
 
-                <div class="card border-0">
-                    <div class="card-body">
-                        <div class="row ">
-                            <div class="col border-secondary border-right-0 border-top-0 border-bottom-0 border-left ">
-                                <h3 class="pb-3 pt-0 text-bold">
-                                    Lo jueguito casuale versu lo jueguito monguis 
-                                </h3>
-                                <div class="d-flex pb-0 ">
-                                    <img class="rounded-pill" width="50px" height="50px"
-                                        src="https://instagram.fcnq2-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/85053037_800510723776174_5894956777147323725_n.jpg?_nc_ht=instagram.fcnq2-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=-24N8TQZH24AX9zCl8v&oh=5e2a8d35280cc4f779d03ac02aace9c3&oe=5F83FA80">
-                                    <div class="col">
-                                        <span class="h5">Matias Nuñez</span>
-                                        <p class="text-muted">Hace 2 dias</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col border-left border-gray">
-
-                                <div class="row px-3">
-                                    <div class="col">
-                                        <h6 class=" text-black-50 mb-3">Respuestas</h6>
-                                        <h5 class="">29</h5>
-
-                                    </div>
-                                    <div class="col">
-                                        <h6 class=" text-black-50 mb-3 ">Actividad</h6>
-                                        <h5 class="">Hace 5 minutos.</h5>
-
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row px-3">
-                                    <div class="col">
-                                        <h6 class=" text-black-50 mb-3">Mejor Respuesta</h6>
-                                        <h5 class="text-truncate" style="max-width: 350px;">Matias Nuñez: Esto es una
-                                            pregunta</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
                 <hr>
 
 
@@ -140,3 +109,19 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript">
+        // <![CDATA[
+        $(function() {
+            $(".consulta").each(function(i) {
+                len = $(this).text().length;
+                if (len > 30) {
+                    $(this).text($(this).text().substr(0, 80) + '...');
+                }
+            });
+        });
+        // ]]>
+
+    </script>
+@endpush

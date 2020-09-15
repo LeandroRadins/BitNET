@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Tema;
 use App\Pregunta;
 use Illuminate\Http\Request;
@@ -52,9 +53,9 @@ class PreguntaController extends Controller
      * @param  \App\Pregunta  $pregunta
      * @return \Illuminate\Http\Response
      */
-    public function show(Pregunta $pregunta)
+    public function show(Tema $tema, Pregunta $pregunta)
     {
-        //
+        return view('pregunta.show', compact('tema', 'pregunta'));
     }
 
     /**

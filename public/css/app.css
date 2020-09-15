@@ -10947,3 +10947,7 @@ a.text-dark:focus {
   border-top-right-radius: 0;
 }
 
+.heart {
+  color: red;
+}
+
