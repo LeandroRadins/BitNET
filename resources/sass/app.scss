@@ -8,8 +8,6 @@
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
-// Select 2
-@import "~select2/dist/css/select2.min.css";
 
 // Datatables
 @import "~datatables.net-bs4/css/datatables.bootstrap4.min.css";
@@ -67,4 +65,8 @@
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.heart{
+  color: red;
 }
