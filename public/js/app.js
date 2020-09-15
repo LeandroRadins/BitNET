@@ -85322,12 +85322,12 @@ module.exports = function(module) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var select2_dist_js_select2_full__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! select2/dist/js/select2.full */ "./node_modules/select2/dist/js/select2.full.js");
 /* harmony import */ var select2_dist_js_select2_full__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(select2_dist_js_select2_full__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var datatables_net_bs4_js_dataTables_bootstrap4__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! datatables.net-bs4/js/dataTables.bootstrap4 */ "./node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js");
-/* harmony import */ var datatables_net_bs4_js_dataTables_bootstrap4__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(datatables_net_bs4_js_dataTables_bootstrap4__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var bootstrap_select_dist_js_bootstrap_select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bootstrap-select/dist/js/bootstrap-select */ "./node_modules/bootstrap-select/dist/js/bootstrap-select.js");
-/* harmony import */ var bootstrap_select_dist_js_bootstrap_select__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(bootstrap_select_dist_js_bootstrap_select__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var bootstrap_select_dist_js_i18n_defaults_es_ES__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! bootstrap-select/dist/js/i18n/defaults-es_ES */ "./node_modules/bootstrap-select/dist/js/i18n/defaults-es_ES.js");
-/* harmony import */ var bootstrap_select_dist_js_i18n_defaults_es_ES__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(bootstrap_select_dist_js_i18n_defaults_es_ES__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var datatables_net_bs4_js_dataTables_bootstrap4__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! datatables.net-bs4/js/dataTables.bootstrap4 */ "./node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js");
+/* harmony import */ var datatables_net_bs4_js_dataTables_bootstrap4__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(datatables_net_bs4_js_dataTables_bootstrap4__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var bootstrap_select_dist_js_bootstrap_select__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap-select/dist/js/bootstrap-select */ "./node_modules/bootstrap-select/dist/js/bootstrap-select.js");
+/* harmony import */ var bootstrap_select_dist_js_bootstrap_select__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(bootstrap_select_dist_js_bootstrap_select__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var bootstrap_select_dist_js_i18n_defaults_es_ES__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bootstrap-select/dist/js/i18n/defaults-es_ES */ "./node_modules/bootstrap-select/dist/js/i18n/defaults-es_ES.js");
+/* harmony import */ var bootstrap_select_dist_js_i18n_defaults_es_ES__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(bootstrap_select_dist_js_i18n_defaults_es_ES__WEBPACK_IMPORTED_MODULE_3__);
 
 
 

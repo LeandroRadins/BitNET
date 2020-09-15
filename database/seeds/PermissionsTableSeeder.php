@@ -15,6 +15,43 @@ class PermissionsTableSeeder extends Seeder
         //Permisos de usuarios
         Permission::create([
             'name' => 'Menu de usuarios',
+            'slug' => 'roles',
+            'description' => 'Permite listar a todos los menues de los roles del sistema',
+        ]);
+
+        Permission::create([
+            'name' => 'Navegar roles',
+            'slug' => 'roles.index',
+            'description' => 'Permite listar a todos los roles del sistema',
+        ]);
+
+        Permission::create([
+            'name' => 'Ver detalles de usuario',
+            'slug' => 'roles.show',
+            'description' => 'Permite ver los detalles de un usuario del sistema',
+        ]);
+
+        Permission::create([
+            'name' => 'Crear roles',
+            'slug' => 'roles.create',
+            'description' => 'Permite cargar roles al sistema',
+        ]);
+
+        Permission::create([
+            'name' => 'Editar roles',
+            'slug' => 'roles.edit',
+            'description' => 'Permite editar los datos de los roles del sistema',
+        ]);
+
+        Permission::create([
+            'name' => 'Eliminar roles',
+            'slug' => 'roles.destroy',
+            'description' => 'Permite eliminar roles del sistema',
+        ]);
+
+        //Permisos de usuarios
+        Permission::create([
+            'name' => 'Menu de usuarios',
             'slug' => 'users',
             'description' => 'Permite listar a todos los menues de los usuarios del sistema',
         ]);

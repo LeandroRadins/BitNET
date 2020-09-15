@@ -4,12 +4,14 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Caffeinated\Shinobi\Concerns\HasRolesAndPermissions;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use SoftDeletes;
     use HasRolesAndPermissions;
 
     /**
@@ -42,7 +44,7 @@ class User extends Authenticatable
 
     public function materias()
     {
-        return $this->belongsToMany(Materia::class);
+        return $this->belongsToMany(Materia::class, 'materias_users')->withTimestamps();
     }
 
     public function preguntas()

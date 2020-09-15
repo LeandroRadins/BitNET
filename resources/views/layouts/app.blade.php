@@ -118,7 +118,7 @@
                             @can('users.create')
                             <li class="nav-item  rounded-pill text-primary h5 w-75 ">
                                 <a class="nav-link text-decoration-none font-weight-bolder "
-                                    href="{{route("users.show", ['id'=>Auth::user()->id])}}">
+                                    href="{{route("users.index")}}">
                                     <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-person-fill"
                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
