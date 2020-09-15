@@ -8,6 +8,7 @@ use App\Http\Requests\UserStoreRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Caffeinated\Shinobi\Models\Role;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -54,11 +55,29 @@ class UserController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
-        $validated = $request->validated();
-        $user = User::create($validated);
-        $user->roles()->sync($request->input('roles', []));
-        $user->materias()->sync($request->input('materias', []));
-        return redirect()->route('users.index');
+        $users = User::withTrashed()->get();
+
+        $existe = false;
+        foreach ($users as $user) {
+            if ($request->email != $user->email) {
+                $existe = false;
+            } else {
+                $existe = true;
+                $restore = User::withTrashed()->find($user->id);
+                $restore->restore();
+                break;  
+            }
+        }
+        if ($existe = false) {
+            $validated = $request->validated();
+            $user = User::create($validated);
+            $user->password = Hash::make($request->password);
+            $user->save();
+            $user->roles()->sync($request->input('roles', []));
+            $user->materias()->sync($request->input('materias', []));
+        }
+         
+            return redirect()->route('users.index');
     }
 
     /**
@@ -78,9 +97,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        $roles = Role::all()->pluck('name', 'id');
+        $materias = Materia::all()->pluck('nombre', 'id');
+        return view('user.edit', compact('user','roles', 'materias'));
     }
 
     /**
@@ -103,7 +124,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
+        if (auth()->user()->id != $user->id) {
+            $user->delete();
+        } else {
+            return redirect()->back();
+        }
         return redirect()->route('users.index');
     }
 
