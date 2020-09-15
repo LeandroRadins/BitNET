@@ -1,4 +1,7 @@
-
+import "select2/dist/js/select2.full"
+import "datatables.net-bs4/js/dataTables.bootstrap4"
+import "bootstrap-select/dist/js/bootstrap-select"
+import "bootstrap-select/dist/js/i18n/defaults-es_ES"
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
