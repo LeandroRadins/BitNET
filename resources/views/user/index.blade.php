@@ -47,7 +47,7 @@
                         {{ $user->fechaNac }}
                     </td>
                     <td class="text-center">
-                        @can('users.edit')
+                        @can('users.show')
                         <a class="btn btn-info btn-sm" style="color: white" role="button"
                             href="{{ route('users.show', ['id' => $user->id]) }}">Ver</a>
                         @endcan
@@ -57,7 +57,7 @@
                         @endcan
                         @can('users.destroy')
                         <form action="{{ route('users.destroy', $user->id) }}" method="POST"
-                            onsubmit="return confirm('Desea eliminar el rol')" style="display: inline-block;">
+                            onsubmit="return confirm('Desea eliminar el usuario')" style="display: inline-block;">
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="submit" class="btn btn-xs btn-danger btn-sm" value="Eliminar">
