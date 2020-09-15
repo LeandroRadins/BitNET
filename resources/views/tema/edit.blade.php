@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Editar '.$tema->nombre)
+@section('title', 'Editar ' . $tema->nombre)
 
 @section('content')
     <div class="row mb-4">
@@ -20,8 +20,12 @@
                             <div class="form-group row">
                                 <label class="col-3 col-form-label-lg h3" for="nombre">Nombre del Tema</label>
                                 <div class="col-9">
-                                    <input type="text" class="form-control " id="nombre" name="nombre"
-                                        aria-describedby="emailHelp" placeholder="Escriba el Nombre del Tema" value="{{$tema->nombre}}">
+                                    <input type="text" class="form-control @error('nombre') is-invalid @enderror"
+                                        id="nombre" name="nombre" aria-describedby="emailHelp"
+                                        placeholder="Escriba el Nombre del Tema" value="{{ $tema->nombre }}">
+                                    @error('nombre')
+                                    <small id="error" class="px-2 form-text" style="color: red">{{ $message }}</small>
+                                    @enderror
                                 </div>
 
 
@@ -30,11 +34,15 @@
                             <div class="form-group row pt-3">
                                 <label class="col-3 col-form-label-lg h4" for="descripcion">Descripcion del Tema</label>
                                 <div class="col-9">
-                                    <textarea class="form-control " id="descripcion" rows="4" name="descripcion">{{$tema->descripcion}}</textarea>
-                                <small id="emailHelp" class="form-text text-muted">Ésta es la descripcion que se mostrara
-                                    bajo el nombre del tema, procure describir brevemente.</small>
+                                    <textarea class="form-control @error('descripcion') is-invalid @enderror"
+                                        id="descripcion" rows="4" name="descripcion">{{ $tema->descripcion }}</textarea>
+                                    <small id="emailHelp" class="form-text text-muted">Ésta es la descripcion que se
+                                        mostrara
+                                        bajo el nombre del tema, procure describir brevemente.</small>
                                 </div>
-
+                                @error('descripcion')
+                                <small id="error" class="px-2 form-text" style="color: red">{{ $message }}</small>
+                                @enderror
 
                             </div>
                             <div class="row justify-content-end px-3 pt-3">

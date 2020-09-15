@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Tema;
+use App\Http\Requests\TemaStoreRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -44,9 +45,10 @@ class TemaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TemaStoreRequest $request)
     {
-        $tema = Tema::create($request->all());
+        $validated = $request->validated();
+        $tema = Tema::create($validated);
         return redirect()->route('temas.index');
     }
 
@@ -79,9 +81,10 @@ class TemaController extends Controller
      * @param  \App\Tema  $tema
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tema $tema)
+    public function update(TemaStoreRequest $request, Tema $tema)
     {
-        $tema->update($request->all());
+        $validated = $request->validated();
+        $tema->update($validated);
         return redirect()->route('temas.show', $tema->id);
     }
 
