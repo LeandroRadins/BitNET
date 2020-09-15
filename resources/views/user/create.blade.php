@@ -27,8 +27,8 @@
                         <div class="form-group row">
                             <label class="col-3 col-form-label-lg h3" for="slug">SLUG</label>
                             <div class="col-9">
-                                <input type="text" readonly class="form-control @error('slug') is-invalid @enderror"
-                                    id="slug" name="slug" placeholder="El SLUG se genera automaticamente">
+                                <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug"
+                                    name="slug" placeholder="El SLUG se genera automaticamente">
                                 @error('slug')
                                 <small id="error" class="px-2 form-text" style="color: red">{{$message}}</small>
                                 @enderror
@@ -50,14 +50,12 @@
                         <div class="form-group row pt-3">
                             <label class="col-3 col-form-label-lg h4" for="permissions">Permisos</label>
                             <div class="col-9">
-                                <select name="permissions[]" id="permissions" class="selectpicker form-control pt-3"
-                                    multiple data-selected-text-format="count > 4" data-live-search="true"
-                                    data-actions-box="true" title="Seleccione los permisos" data-size="5"
-                                    data-dropup-auto="false">
-                                    @foreach($permissions as $id => $permission)
+                                <select name="permissions[]" id="permissions" class="select2" multiple="multiple"
+                                    required>
+                                    @foreach($permissions as $id => $permissions)
                                     <option value="{{ $id }}"
-                                        {{ (in_array($id, old('permissions', [])) || isset($role) && $role->permissions->contains($id)) ? 'selected' : '' }}>
-                                        {{ $permission }}
+                                        {{ (in_array($id, old('permissions', [])) || isset($user) && $user->permissions->contains($id)) ? 'selected' : '' }}>
+                                        {{ $permissions }}
                                     </option>
                                     @endforeach
                                 </select>
@@ -70,6 +68,7 @@
                         </div>
                         <div class="row justify-content-end px-3 pt-3">
                             <button type="submit" class="btn btn-primary px-4">Crear Rol</button>
+
                         </div>
                         <hr class="mb-0 mt-4">
                     </form>
@@ -91,10 +90,6 @@
     });
 </script>
 <script>
-    $(document).ready(function () {
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-            $('.selectpicker').selectpicker('mobile');
-        }
-    });
+    $('.permissions').select2();
 </script>
 @endpush

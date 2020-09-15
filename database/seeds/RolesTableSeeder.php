@@ -25,7 +25,9 @@ class RolesTableSeeder extends Seeder
             'slug' => 'regis',
             'description' => 'Usuario registrador del sistema',
         ]);
+
         $permisRegis = Permission::where('slug', 'users.create')->firstOrFail();
         $regis->permissions()->sync($permisRegis);
+
     }
 }
