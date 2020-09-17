@@ -31,12 +31,11 @@ Editar {{$user->name}}
                         <div class="form-group row">
                             <label class="col-3 col-form-label-lg h3" for="name">Fecha de nacimiento</label>
                             <div class="col-9">
-                                <div class="input-group date" id="divFecha" data-target-input="nearest">
-                                    <input type="text" id="fechaNac" name="fechaNac"
-                                        class="form-control datetimepicker-input" data-target="#divFecha"
-                                        value="{{ $user->fechaNac }}" />
-                                    <div class="input-group-append" data-target="#divFecha" data-toggle="datetimepicker"
-                                        value="{{  $user->fechaNac }}">
+                                <div class="input-group date" id="fechaNacimiento" data-target-input="nearest">
+                                    <input type="text" class="form-control datetimepicker-input"
+                                        data-target="#fechaNacimiento" value="" />
+                                    <div class="input-group-append" data-target="#fechaNacimiento"
+                                        data-toggle="datetimepicker">
                                         <div class="input-group-text"><svg width="1em" height="1em" viewBox="0 0 16 16"
                                                 class="bi bi-calendar2-event-fill" fill="currentColor"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +49,7 @@ Editar {{$user->name}}
                                 @enderror
                             </div>
                         </div>
-                        <input type="hidden" name="userFecha" id="userFecha" value="{{ $user->fechaNac }}">
+                        <input type="hidden" name="fechaNac" id="fechaNac" value="{{ $user->fechaNac }}">
                         <hr>
                         <div class="form-group row">
                             <label class="col-3 col-form-label-lg h3" for="email">Email</label>
@@ -138,20 +137,19 @@ Editar {{$user->name}}
             maxDate: Date.now(),
             locale: 'es',
         });
+        console.log(fechaNac.value)
+        var fecha = moment(fechaNac.value, 'YYYY/MM/DD');
+        console.log(fecha);
+        $('#fechaNacimiento').datetimepicker('date', fecha);
 
-        console.log(userFecha.value);
-        var dateF = $('#divFecha').datetimepicker('viewDate', moment(userFecha.value, 'y/m/d'));
-        console.log(dateF);
 
-
-         $('#divFecha').on("change.datetimepicker", function (e) {
-              date = $('#divFecha').datetimepicker('viewDate');
-              $('#fechaNac').val(date);
-        });
-
-        // SelectPicker para mobile
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-            $('.selectpicker').selectpicker('mobile');
+        // $('#fechaNac').val(date);
+        // $('#fechaNacimiento').on("change.datetimepicker", function (e) {
+        //     date = $('#fechaNacimiento').datetimepicker('viewDate');
+        //     $('#fechaNac').val(date);
+        // });
+         if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+             $('.selectpicker').selectpicker('mobile');
         }
     });
 </script>
