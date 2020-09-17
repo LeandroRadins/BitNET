@@ -32,9 +32,9 @@ Editar {{$user->name}}
                             <label class="col-3 col-form-label-lg h3" for="name">Fecha de nacimiento</label>
                             <div class="col-9">
                                 <div class="input-group date" id="fechaNacimiento" data-target-input="nearest">
-                                    <input type="text" id="fechaNacimiento" class="form-control datetimepicker-input"
+                                    <input type="text" class="form-control datetimepicker-input"
                                         data-target="#fechaNacimiento"
-                                        value="{{ old('fechaNac', isset($user) ? $user->fechaNac : '') }}" />
+                                        value="" />
                                     <div class="input-group-append" data-target="#fechaNacimiento"
                                         data-toggle="datetimepicker">
                                         <div class="input-group-text"><svg width="1em" height="1em" viewBox="0 0 16 16"
@@ -51,7 +51,7 @@ Editar {{$user->name}}
                             </div>
                         </div>
                         <input type="hidden" name="fechaNac" id="fechaNac"
-                            value="{{ old('fechaNac', isset($user) ? $user->fechaNac : '') }}">
+                            value="{{ $user->fechaNac }}">
                         <hr>
                         <div class="form-group row">
                             <label class="col-3 col-form-label-lg h3" for="email">Email</label>
@@ -138,15 +138,19 @@ Editar {{$user->name}}
             maxDate: Date.now(),
             locale: 'es',
         });
-        
-        var date = $('#fechaNacimiento').datetimepicker('viewDate');
-        $('#fechaNac').val(date);
-        $('#fechaNacimiento').on("change.datetimepicker", function (e) {
-            date = $('#fechaNacimiento').datetimepicker('viewDate');
-            $('#fechaNac').val(date);
-        });
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-            $('.selectpicker').selectpicker('mobile');
+        console.log(fechaNac.value)
+        var fecha = moment(fechaNac.value, 'YYYY/MM/DD');
+        console.log(fecha);
+        $('#fechaNacimiento').datetimepicker('date', fecha);
+
+
+        // $('#fechaNac').val(date);
+        // $('#fechaNacimiento').on("change.datetimepicker", function (e) {
+        //     date = $('#fechaNacimiento').datetimepicker('viewDate');
+        //     $('#fechaNac').val(date);
+        // });
+         if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+             $('.selectpicker').selectpicker('mobile');
         }
     });
 </script>
