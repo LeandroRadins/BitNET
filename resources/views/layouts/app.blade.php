@@ -116,7 +116,7 @@
                             </li>
                             @endcan
                             @can('users.create')
-                            <li class="nav-item  rounded-pill text-primary h5 w-75 ">
+                            <li class="nav-item  rounded-pill text-primary h5 w-75 {{ request()->is('users') || request()->is('users/*')  ? 'bg-lightpurple' : '' }}">
                                 <a class="nav-link text-decoration-none font-weight-bolder "
                                     href="{{route("users.index")}}">
                                     <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-person-fill"
@@ -128,7 +128,7 @@
                             </li>
                             @endcan
                             @can('roles.index')
-                            <li class="nav-item rounded-pill text-primary h5 w-75 ">
+                            <li class="nav-item rounded-pill text-primary h5 w-75 {{ request()->is('roles') || request()->is('roles/*')  ? 'bg-lightpurple' : '' }}">
                                 <a class="nav-link text-decoration-none font-weight-bolder "
                                     href="{{route("roles.index")}}">
                                     <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-key-fill"
@@ -139,7 +139,7 @@
                                     &nbsp;&nbsp;&nbsp;Roles</a>
                             </li>
                             @endcan
-                            <li class="nav-item  bg-lightpurple rounded-pill text-primary h5 w-75 ">
+                            <li class="nav-item rounded-pill text-primary h5 w-75 {{ request()->is('temas') || request()->is('temas/*')  ? 'bg-lightpurple' : '' }}">
                                 <a class="nav-link text-decoration-none font-weight-bolder align-items-baseline"
                                     href="{{route("temas.index")}}">
 

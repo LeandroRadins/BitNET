@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Tema;
+use App\Pregunta;
+use App\Respuesta;
 use App\Reputacion;
 use Illuminate\Http\Request;
 
@@ -33,9 +37,60 @@ class ReputacionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Tema $tema, Pregunta $pregunta, Respuesta $respuesta, Request $request)
     {
-        //
+        switch ($request->input('action')) {
+            case 'like':
+                $oldRep = Auth::user()->reputaciones->firstWhere('respuesta_id', $respuesta->id);
+                if ($oldRep != null) {
+                    if($oldRep->valor == true){
+                        $oldRep->delete();
+                        break;
+                    }elseif($oldRep->valor == false){
+                        $oldRep->valor=true;
+                        $oldRep->save();
+                        break;
+                    }else{
+                        $oldRep->valor=null;
+                        $oldRep->save();
+                        break;
+                    }
+                }else{
+                    $reputacion = new Reputacion();
+                    $reputacion->valor = true;
+                    $reputacion->user_id = Auth::user()->id;
+                    $reputacion->respuesta_id = $respuesta->id;
+                    $reputacion->save();
+                    break;
+                }
+                
+                
+            case 'dislike':
+                $oldRep = Auth::user()->reputaciones->firstWhere('respuesta_id', $respuesta->id);
+                if ($oldRep != null) {
+                    if($oldRep->valor == false){
+                        $oldRep->delete();
+                        break;
+                    }elseif($oldRep->valor == true){
+                        $oldRep->valor=false;
+                        $oldRep->save();
+                        break;
+                    }else{
+                        $oldRep->valor=null;
+                        $oldRep->save();
+                        break;
+                    }
+                }else{
+                    $reputacion = new Reputacion();
+                    $reputacion->valor = false;
+                    $reputacion->user_id = Auth::user()->id;
+                    $reputacion->respuesta_id = $respuesta->id;
+                    $reputacion->save();
+                    break;
+                }
+                
+        }
+        return redirect()->back();
     }
 
     /**

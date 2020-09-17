@@ -16,6 +16,10 @@ class CreateReputacionesTable extends Migration
         Schema::create('reputaciones', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->boolean('valor')->nullable();
+            $table->bigInteger('respuesta_id')->unsigned()->nullable();
+            $table->foreign('respuesta_id')->references('id')->on('respuestas');
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->softDeletes();
             $table->timestamps();
         });
