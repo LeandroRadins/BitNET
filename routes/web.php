@@ -26,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('temas/{tema}/guardar_pregunta', 'PreguntaController@store')->name('preguntas.store');
     Route::get('temas/{tema}/{pregunta}', 'PreguntaController@show')->name('preguntas.show');
     Route::post('temas/{tema}/{pregunta}/guardar_respuesta', 'RespuestaController@store')->name('respuesta.store');
+    Route::post('temas/{tema}/{pregunta}/{respuesta}/guardar_reputacion', 'ReputacionController@store')->name('reputacion.store');
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RolController');
 });

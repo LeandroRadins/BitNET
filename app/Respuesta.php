@@ -19,4 +19,8 @@ class Respuesta extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function reputaciones()
+    {
+        return $this->hasMany(Reputacion::class);
+    }
 }

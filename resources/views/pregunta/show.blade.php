@@ -46,7 +46,7 @@
                                     <path fill-rule="evenodd"
                                         d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                                 </svg>
-                                {{count($pregunta->respuestas)}}
+                                {{ count($pregunta->respuestas) }}
                             </a>
                         </div>
                         <div class="ml-4">
@@ -67,16 +67,16 @@
             </div>
             <br>
             <br>
-            @if (count($pregunta->respuestas)>0)
-            <span class="h2 p-0 m-0">
-                Respuestas
-            </span>
+            @if (count($pregunta->respuestas) > 0)
+                <span class="h2 p-0 m-0">
+                    Respuestas
+                </span>
             @else
-            <span class="h4 p-0 m-0 ">
-                No hay respuestas para esta pregunta todavia, se el primero.
-            </span>  
+                <span class="h4 p-0 m-0 ">
+                    No hay respuestas para esta pregunta todavia, se el primero.
+                </span>
             @endif
-            
+
             <br>
             <br>
             <br>
@@ -97,32 +97,39 @@
 
                         </div>
                         <hr>
-                        <div class="d-flex justify-content-end mb-3 px-3 ">
-                            <div class="ml-4">
-                                <a class="text-muted text-decoration-none" id="{{ $respuesta->id }}">
-                                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="but bi bi-heart-fill"
-                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                                    </svg>
-                                    0
-                                </a>
+                        <form
+                            action="{{ route('reputacion.store', ['tema' => $tema->id, 'pregunta' => $pregunta->id, 'respuesta' => $respuesta->id]) }}"
+                            method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="d-flex justify-content-end mb-3 px-3 ">
+                                <div class="ml-4">
+                                    <button type="submit" name="action" value="like"
+                                        class="btn m-0 p-0 text-muted text-decoration-none" id="{{ $respuesta->id }}">
+                                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="but @if(Auth::user()->reputaciones->where('respuesta_id', $respuesta->id)->where('valor', true)->first()) heart @endif bi bi-heart-fill"
+                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                                        </svg>
+                                        {{count($respuesta->reputaciones->where('valor', '==', true))}}
+                                    </button>
+                                </div>
+                                <div class="ml-4">
+                                    <button type="submit" name="action" value="dislike"
+                                        class="btn m-0 p-0 text-muted text-decoration-none" id="{{ $respuesta->id }}">
+                                        <svg id="Layer_1" fill="currentColor" height="1.5em" viewBox="0 0 512 512" class="@if(Auth::user()->reputaciones->where('respuesta_id', $respuesta->id)->where('valor', false)->first()) heart @endif"
+                                            width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                                            <g>
+                                                <path
+                                                    d="m217.338 249.134 57.613-95.968-28.932-90.77c-25.936-17.675-56.581-27.206-88.519-27.206-86.846 0-157.5 70.655-157.5 157.5 0 57.861 36.361 120.016 108.075 184.739 54.994 49.633 114.468 85.863 134.012 97.769.908.553 1.823 1.111 2.64 1.611l30.461-115.872-57.851-96.362c-2.852-4.752-2.852-10.689.001-15.441z" />
+                                                <path
+                                                    d="m354.5 35.19c-28.08 0-55.162 7.366-78.922 21.158l30.017 94.168c1.309 4.107.787 8.58-1.432 12.276l-56.47 94.062 56.47 94.062c2.081 3.466 2.675 7.625 1.646 11.534l-28.465 108.278c24.623-15.039 77.329-48.428 126.494-92.681 71.771-64.601 108.162-126.963 108.162-185.357 0-86.845-70.654-157.5-157.5-157.5z" />
+                                            </g>
+                                        </svg>
+                                        {{count($respuesta->reputaciones->where('valor', '==', false))}}
+                                    </button>
+                                </div>
                             </div>
-                            <div class="ml-4">
-                                <a class="text-muted text-decoration-none" id="{{ $respuesta->id }}">
-                                    <svg id="Layer_1" fill="currentColor" height="1.5em" viewBox="0 0 512 512" width="1.5em"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <g>
-                                            <path
-                                                d="m217.338 249.134 57.613-95.968-28.932-90.77c-25.936-17.675-56.581-27.206-88.519-27.206-86.846 0-157.5 70.655-157.5 157.5 0 57.861 36.361 120.016 108.075 184.739 54.994 49.633 114.468 85.863 134.012 97.769.908.553 1.823 1.111 2.64 1.611l30.461-115.872-57.851-96.362c-2.852-4.752-2.852-10.689.001-15.441z" />
-                                            <path
-                                                d="m354.5 35.19c-28.08 0-55.162 7.366-78.922 21.158l30.017 94.168c1.309 4.107.787 8.58-1.432 12.276l-56.47 94.062 56.47 94.062c2.081 3.466 2.675 7.625 1.646 11.534l-28.465 108.278c24.623-15.039 77.329-48.428 126.494-92.681 71.771-64.601 108.162-126.963 108.162-185.357 0-86.845-70.654-157.5-157.5-157.5z" />
-                                        </g>
-                                    </svg>
-                                    0
-                                </a>
-                            </div>
-                        </div>
+                        </form>
                     </div>
 
                 </div>
@@ -166,17 +173,3 @@
 
 @endsection
 
-@push('scripts')
-    <script>
-        $(document).ready(function() {
-            $('.but').on('click', function(e) {
-                var id = $(this).attr('id');
-                console.log(id);
-                $(this).toggleClass("heart");
-            });
-        });
-
-    </script>
-
-
-@endpush

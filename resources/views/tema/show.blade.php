@@ -66,9 +66,7 @@
 
                                     </div>
                                     <div class="col">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas qui sit dolores
-                                        adipisci. Nemo voluptates perspiciatis beatae temporibus ad, voluptatum vero minus
-                                        modi sint culpa delectus nisi. Rerum, maxime debitis.
+                                        {{ $pregunta->consulta }}
                                     </div>
                                     <br>
                                 </div>
@@ -82,15 +80,29 @@
                                         </div>
                                         <div class="col">
                                             <h6 class=" text-black-50 mb-3 ">Actividad</h6>
-                                            <h5 class="">Hace 5 minutos.</h5>
+                                            <h5 class="">
+                                                @if (count($pregunta->respuestas) > 0)
+                                                    {{ $pregunta->respuestas->last()->created_at->diffForHumans() }}
+                                                    
+                                                @else
+                                                    -
+                                                @endif
+                                            </h5>
 
                                         </div>
                                     </div>
                                     <hr>
                                     <div class="row px-3">
                                         <div class="col">
-                                            <h6 class=" text-black-50 mb-3">Mejor Respuesta</h6>
-                                            <h5 class="text-truncate" style="max-width: 350px;">asd</h5>
+                                            <h6 class=" text-black-50 mb-3">Ultima Respuesta</h6>
+                                            <h5 class="text-truncate" style="max-width: 350px;">
+                                                @if (count($pregunta->respuestas) > 0)
+                                                    <span>{{ $pregunta->respuestas->last()->autor->name }}: </span>
+                                                    {{ $pregunta->respuestas->last()->desarrollo }}
+                                                @else
+                                                    No hay respuestas todavia.
+                                                @endif
+                                            </h5>
                                             <br>
 
                                         </div>
