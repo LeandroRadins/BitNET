@@ -26,6 +26,8 @@
     "dependencies": {
         "bootstrap-select": "^1.13.18",
         "datatables.net-bs4": "^1.10.21",
-        "select2": "^4.0.13"
+        "moment": "^2.28.0",
+        "select2": "^4.0.13",
+        "tempusdominus-bootstrap-4": "^5.1.2"
     }
 }

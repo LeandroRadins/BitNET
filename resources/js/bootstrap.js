@@ -8,7 +8,10 @@ window._ = require('lodash');
 
 try {
     window.Popper = require('popper.js').default;
+    window.moment = require('moment');
     window.$ = window.jQuery = require('jquery');
+    window.datetimepicker = require('tempusdominus-bootstrap-4');
+    require("tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css");
     require('bootstrap');
     require('datatables.net')();
     require('datatables.net-bs4')($);
