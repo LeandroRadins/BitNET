@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Materia;
+use App\Reputacion;
+use App\Respuesta;
 use App\Http\Requests\UserStoreRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -90,17 +92,44 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        $respuestas = $user->respuestas;
+        $positivos = 0;
+        $negativos = 0;
+
+        foreach ($respuestas as $respuesta) {
+            foreach ($respuesta->reputaciones as $reputacion) {
+                if ($reputacion->valor == true) {
+                    $positivos ++;
+                }else {
+                    $negativos ++;
+                }
+            }
+        }
+
         if ($user->id == Auth::user()->id){
-            return  redirect()->route('users.profile');
+            return  view('user.myProfile',compact('user', 'positivos', 'negativos'));
         }else{
-            return view('user.show', compact('user'));
+            return view('user.show', compact('user', 'positivos', 'negativos'));
         }
     }
 
     public function profile()
     {
         $user = Auth::user();
-        return view('user.myProfile', compact('user'));
+        $respuestas = $user->respuestas;
+        $positivos = 0;
+        $negativos = 0;
+
+        foreach ($respuestas as $respuesta) {
+            foreach ($respuesta->reputaciones as $reputacion) {
+                if ($reputacion->valor == true) {
+                    $positivos ++;
+                }else {
+                    $negativos ++;
+                }
+            }
+        }
+        return view('user.myProfile', compact('user', 'positivos', 'negativos'));
     }
 
     /**
