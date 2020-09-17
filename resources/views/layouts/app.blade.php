@@ -104,9 +104,10 @@
                     <div class="px-5 py-4">
                         <ul class="nav">
                             @can('users.show')
-                            <li class="nav-item  rounded-pill text-primary h5 w-75 ">
-                                <a class="nav-link text-decoration-none font-weight-bolder "
-                                    href="{{route("users.show", ['id'=>Auth::user()->id])}}">
+                            <li
+                                class="nav-item  rounded-pill text-primary h5 w-75 {{ request()->is('miPerfil') || request()->is('miPerfil/*')  ? 'bg-lightpurple' : '' }}">
+                                <a class="nav-link text-decoration-none font-weight-bolder " href="
+                                {{route("users.profile")}}">
                                     <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-person-fill"
                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
@@ -116,7 +117,8 @@
                             </li>
                             @endcan
                             @can('users.create')
-                            <li class="nav-item  rounded-pill text-primary h5 w-75 {{ request()->is('users') || request()->is('users/*')  ? 'bg-lightpurple' : '' }}">
+                            <li
+                                class="nav-item  rounded-pill text-primary h5 w-75 {{ request()->is('users') || request()->is('users/*')  ? 'bg-lightpurple' : '' }}">
                                 <a class="nav-link text-decoration-none font-weight-bolder "
                                     href="{{route("users.index")}}">
                                     <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-person-fill"
@@ -128,7 +130,8 @@
                             </li>
                             @endcan
                             @can('roles.index')
-                            <li class="nav-item rounded-pill text-primary h5 w-75 {{ request()->is('roles') || request()->is('roles/*')  ? 'bg-lightpurple' : '' }}">
+                            <li
+                                class="nav-item rounded-pill text-primary h5 w-75 {{ request()->is('roles') || request()->is('roles/*')  ? 'bg-lightpurple' : '' }}">
                                 <a class="nav-link text-decoration-none font-weight-bolder "
                                     href="{{route("roles.index")}}">
                                     <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-key-fill"
@@ -139,7 +142,8 @@
                                     &nbsp;&nbsp;&nbsp;Roles</a>
                             </li>
                             @endcan
-                            <li class="nav-item rounded-pill text-primary h5 w-75 {{ request()->is('temas') || request()->is('temas/*')  ? 'bg-lightpurple' : '' }}">
+                            <li
+                                class="nav-item rounded-pill text-primary h5 w-75 {{ request()->is('temas') || request()->is('temas/*')  ? 'bg-lightpurple' : '' }}">
                                 <a class="nav-link text-decoration-none font-weight-bolder align-items-baseline"
                                     href="{{route("temas.index")}}">
 

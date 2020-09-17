@@ -132,7 +132,7 @@ Editar {{$user->name}}
 <script>
     $(document).ready(function () {
         // Funciones del datetimepicker
-        $('#divFecha').datetimepicker({
+        $('#fechaNacimiento').datetimepicker({
             format: 'DD/MM/YYYY',
             maxDate: Date.now(),
             locale: 'es',

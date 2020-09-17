@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -89,7 +90,17 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('user.show', compact('user'));
+        if ($user->id == Auth::user()->id){
+            return  redirect()->route('users.profile');
+        }else{
+            return view('user.show', compact('user'));
+        }
+    }
+
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('user.myProfile', compact('user'));
     }
 
     /**
