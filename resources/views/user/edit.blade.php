@@ -21,17 +21,44 @@ Editar {{$user->name}}
                             <label class="col-3 col-form-label-lg h3" for="name">Nombre del Usuario</label>
                             <div class="col-9">
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                                    name="name" placeholder="Ingrese el nombre del usuario">
+                                    name="name" placeholder="Ingrese el nombre del usuario"
+                                    value="{{ old('name', isset($user) ? $user->name : '') }}">
                                 @error('name')
                                 <small id="emailHelp" class="px-2 form-text" style="color: red">{{$message}}</small>
                                 @enderror
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label class="col-3 col-form-label-lg h3" for="name">Fecha de nacimiento</label>
+                            <div class="col-9">
+                                <div class="input-group date" id="fechaNacimiento" data-target-input="nearest">
+                                    <input type="text" id="fechaNacimiento" class="form-control datetimepicker-input"
+                                        data-target="#fechaNacimiento"
+                                        value="{{ old('fechaNac', isset($user) ? $user->fechaNac : '') }}" />
+                                    <div class="input-group-append" data-target="#fechaNacimiento"
+                                        data-toggle="datetimepicker">
+                                        <div class="input-group-text"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                class="bi bi-calendar2-event-fill" fill="currentColor"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 3.5c0-.276.244-.5.545-.5h10.91c.3 0 .545.224.545.5v1c0 .276-.244.5-.546.5H2.545C2.245 5 2 4.776 2 4.5v-1zM11.5 7a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+                                            </svg></div>
+                                    </div>
+                                </div>
+                                @error('fechaNac')
+                                <small id="emailHelp" class="px-2 form-text" style="color: red">{{$message}}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <input type="hidden" name="fechaNac" id="fechaNac"
+                            value="{{ old('fechaNac', isset($user) ? $user->fechaNac : '') }}">
+                        <hr>
+                        <div class="form-group row">
                             <label class="col-3 col-form-label-lg h3" for="email">Email</label>
                             <div class="col-9">
                                 <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                                    name="email" placeholder="Ingrese el email del usuario">
+                                    name="email" placeholder="Ingrese el email del usuario"
+                                    value="{{ old('email', isset($user) ? $user->email : '') }}">
                                 @error('email')
                                 <small id="error" class="px-2 form-text" style="color: red">{{$message}}</small>
                                 @enderror
@@ -106,6 +133,18 @@ Editar {{$user->name}}
 @push('scripts')
 <script>
     $(document).ready(function () {
+        $('#fechaNacimiento').datetimepicker({
+            format: 'DD/MM/YYYY',
+            maxDate: Date.now(),
+            locale: 'es',
+        });
+        
+        var date = $('#fechaNacimiento').datetimepicker('viewDate');
+        $('#fechaNac').val(date);
+        $('#fechaNacimiento').on("change.datetimepicker", function (e) {
+            date = $('#fechaNacimiento').datetimepicker('viewDate');
+            $('#fechaNac').val(date);
+        });
         if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
             $('.selectpicker').selectpicker('mobile');
         }

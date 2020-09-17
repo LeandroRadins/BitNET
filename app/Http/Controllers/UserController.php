@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -56,7 +57,6 @@ class UserController extends Controller
     public function store(UserStoreRequest $request)
     {
         $users = User::withTrashed()->get();
-
         $existe = false;
         foreach ($users as $user) {
             if ($request->email != $user->email) {
@@ -68,16 +68,17 @@ class UserController extends Controller
                 break;  
             }
         }
-        if ($existe = false) {
+        if ($existe == false) {
             $validated = $request->validated();
             $user = User::create($validated);
+            $user->fechaNac = Carbon::parse($request->fechaNac);
             $user->password = Hash::make($request->password);
             $user->save();
             $user->roles()->sync($request->input('roles', []));
             $user->materias()->sync($request->input('materias', []));
+            return redirect()->route('users.index');
         }
          
-            return redirect()->route('users.index');
     }
 
     /**
