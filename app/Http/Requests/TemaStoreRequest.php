@@ -27,12 +27,12 @@ class TemaStoreRequest extends FormRequest
             case 'POST':
                 return [
                     'nombre' => 'required|unique:temas',
-                    'description' => 'required',
+                    'descripcion' => 'required',
                 ];
             case 'PUT':
                 return [
                     'nombre' => 'required|unique:temas,nombre,' . $this->tema->id,
-                    'description' => 'required',
+                    'descripcion' => 'required',
                 ];
             default:
                 break;
@@ -45,7 +45,7 @@ class TemaStoreRequest extends FormRequest
         return [
             'nombre.required' => 'Debe ingresar un nombre para el tema',
             'nombre.unique' => 'Este nombre de tema ya existe',
-            'description.required' => 'Debe ingresar una descripcion para el rol',
+            'descripcion.required' => 'Debe ingresar una descripcion para el tema',
         ];
     }
 }

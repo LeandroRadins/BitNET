@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        \Carbon\Carbon::setLocale('es');
         Schema::defaultStringLength(120);
         date_default_timezone_set('America/Argentina/Buenos_Aires');
     }

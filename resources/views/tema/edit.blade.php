@@ -14,7 +14,8 @@
             <div class="col-10 px-0">
                 <div class="card border-primary border-right-0 border-top-0 border-bottom-0 border-left rounded-0">
                     <div class="card-body pr-0 mt-0 pb-0">
-                        <form action="{{ route('temas.update', [$tema->id]) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('temas.update', ['tema' => $tema->id]) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="form-group row">
@@ -36,13 +37,15 @@
                                 <div class="col-9">
                                     <textarea class="form-control @error('descripcion') is-invalid @enderror"
                                         id="descripcion" rows="4" name="descripcion">{{ $tema->descripcion }}</textarea>
+                                    @error('descripcion')
+                                    <small id="error" class=" form-text" style="color: red">{{ $message }}</small>
+                                    @enderror
                                     <small id="emailHelp" class="form-text text-muted">Ésta es la descripcion que se
                                         mostrara
                                         bajo el nombre del tema, procure describir brevemente.</small>
+
+
                                 </div>
-                                @error('descripcion')
-                                <small id="error" class="px-2 form-text" style="color: red">{{ $message }}</small>
-                                @enderror
 
                             </div>
                             <div class="row justify-content-end px-3 pt-3">
