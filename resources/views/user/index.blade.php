@@ -44,7 +44,7 @@
                         {{ $user->email }}
                     </td>
                     <td>
-                        {{ $user->fechaNac }}
+                        {{ \Carbon\Carbon::parse($user->fechaNac)->format('d/m/Y') }}
                     </td>
                     <td class="text-center">
                         @can('users.show')

@@ -64,7 +64,7 @@
                                                 <h6 class="mb-3" style="color: #1bbd45;">
                                                     Votos Positivos
                                                 </h6>
-                                                <h5 class="text-truncate pl-0" style="max-width: 350px;">Hardcodeado
+                                                <h5 class="text-truncate pl-0" style="max-width: 350px;">{{$positivos}}
                                                 </h5>
 
                                             </div>
@@ -72,7 +72,7 @@
                                                 <h6 class="mb-3" style="color: #e94544;">
                                                     Votos Negativos
                                                 </h6>
-                                                <h5 class="text-truncate pl-0" style="max-width: 350px;">Hardcodeado
+                                                <h5 class="text-truncate pl-0" style="max-width: 350px;">{{$negativos}}
                                                 </h5>
                                             </div>
                                         </div>

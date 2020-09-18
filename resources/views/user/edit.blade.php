@@ -33,8 +33,7 @@ Editar {{$user->name}}
                             <div class="col-9">
                                 <div class="input-group date" id="fechaNacimiento" data-target-input="nearest">
                                     <input type="text" class="form-control datetimepicker-input"
-                                        data-target="#fechaNacimiento"
-                                        value="" />
+                                        data-target="#fechaNacimiento" value="" />
                                     <div class="input-group-append" data-target="#fechaNacimiento"
                                         data-toggle="datetimepicker">
                                         <div class="input-group-text"><svg width="1em" height="1em" viewBox="0 0 16 16"
@@ -50,8 +49,7 @@ Editar {{$user->name}}
                                 @enderror
                             </div>
                         </div>
-                        <input type="hidden" name="fechaNac" id="fechaNac"
-                            value="{{ $user->fechaNac }}">
+                        <input type="hidden" name="fechaNac" id="fechaNac" value="{{ $user->fechaNac }}">
                         <hr>
                         <div class="form-group row">
                             <label class="col-3 col-form-label-lg h3" for="email">Email</label>
@@ -133,6 +131,7 @@ Editar {{$user->name}}
 @push('scripts')
 <script>
     $(document).ready(function () {
+        // Funciones del datetimepicker
         $('#fechaNacimiento').datetimepicker({
             format: 'DD/MM/YYYY',
             maxDate: Date.now(),

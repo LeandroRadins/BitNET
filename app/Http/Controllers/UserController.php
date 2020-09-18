@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Materia;
+use App\Reputacion;
+use App\Respuesta;
 use App\Http\Requests\UserStoreRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -89,7 +92,44 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('user.show', compact('user'));
+        $respuestas = $user->respuestas;
+        $positivos = 0;
+        $negativos = 0;
+
+        foreach ($respuestas as $respuesta) {
+            foreach ($respuesta->reputaciones as $reputacion) {
+                if ($reputacion->valor == true) {
+                    $positivos ++;
+                }else {
+                    $negativos ++;
+                }
+            }
+        }
+
+        if ($user->id == Auth::user()->id){
+            return redirect()->route('user.profile');
+        }else{
+            return view('user.show', compact('user', 'positivos', 'negativos'));
+        }
+    }
+
+    public function profile()
+    {
+        $user = Auth::user();
+        $respuestas = $user->respuestas;
+        $positivos = 0;
+        $negativos = 0;
+
+        foreach ($respuestas as $respuesta) {
+            foreach ($respuesta->reputaciones as $reputacion) {
+                if ($reputacion->valor == true) {
+                    $positivos ++;
+                }else {
+                    $negativos ++;
+                }
+            }
+        }
+        return view('perfil.mi_perfil', compact('user', 'positivos', 'negativos'));
     }
 
     /**
@@ -102,6 +142,8 @@ class UserController extends Controller
     {
         $roles = Role::all()->pluck('name', 'id');
         $materias = Materia::all()->pluck('nombre', 'id');
+        // $fechaNaciemiento = Carbon::formatFrom('d/m/y', $user->fechaNac);
+        // return $fechaNaciemiento;
         return view('user.edit', compact('user','roles', 'materias'));
     }
 
@@ -114,7 +156,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validated();
+        $user = User::create($validated);
+        $user->fechaNac = Carbon::parse($request->fechaNac);
+        $user->password = Hash::make($request->password);
+        $user->save();
+        $user->roles()->sync($request->input('roles', []));
+        $user->materias()->sync($request->input('materias', []));
+        return redirect()->route('users.index');
     }
 
     /**
