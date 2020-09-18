@@ -24,4 +24,14 @@ class Pregunta extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function borrarRespuestas()
+    {
+        $respuestas = $this->respuestas;
+        foreach ($respuestas as $key => $respuesta) {
+            $respuesta->delete();
+            $respuesta->save();
+        }
+        return null;
+    }
 }
