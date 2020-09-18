@@ -14,7 +14,7 @@ Editar {{$user->name}}
         <div class="col-10 px-0">
             <div class="card border-primary border-right-0 border-top-0 border-bottom-0 border-left rounded-0">
                 <div class="card-body pr-0 mt-0 pb-0">
-                    <form action="{{ route("users.edit", [$user->id]) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route("users.update", [$user->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-group row">

@@ -29,16 +29,13 @@ class UserStoreRequest extends FormRequest
                     'name' => 'required',
                     'email' => 'required|email|unique:users,email,NULL,id,deleted_at,NULL',
                     //'email' => 'required|email|unique:users',
-                    // 'fechaNac' => 'required',
                     'password' => 'required',
                 ];
             case 'PUT':
-                $id = $this->route('user')->id;
                 return [
                     'name' => 'required',
-                    'email' => 'required|email|unique:users,email,{$id},id,deleted_at,NULL',
-                    //'email' => 'required|email|unique:users,email,' . $this->user->id,
-                    // 'fechaNac' => 'required',
+                    'email' => 'required|email|unique:users,email,' . $this->user->id,
+                    'fechaNac' => 'required',
                     'password' => 'required',
                 ];
             default:
@@ -55,7 +52,7 @@ class UserStoreRequest extends FormRequest
             'email.unique' => 'Debe ingresar un email valido',
             'fechaNac.required' => 'Debe ingresar una fecha valida',
             // 'fechaNac.date' => 'Debe ingresar una fecha valida',
-            'password.required' => 'Debe ingresar una contraseña valida',
+            'password.required' => 'Debe ingresar una contraseña re loca',
         ];
     }
 }

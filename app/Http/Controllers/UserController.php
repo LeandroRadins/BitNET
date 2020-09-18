@@ -142,8 +142,6 @@ class UserController extends Controller
     {
         $roles = Role::all()->pluck('name', 'id');
         $materias = Materia::all()->pluck('nombre', 'id');
-        // $fechaNaciemiento = Carbon::formatFrom('d/m/y', $user->fechaNac);
-        // return $fechaNaciemiento;
         return view('user.edit', compact('user','roles', 'materias'));
     }
 
@@ -154,10 +152,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserStoreRequest $request, User $user)
     {
-        $validated = $request->validated();
-        $user = User::create($validated);
+        $user->update($request->all());
         $user->fechaNac = Carbon::parse($request->fechaNac);
         $user->password = Hash::make($request->password);
         $user->save();

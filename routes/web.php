@@ -30,4 +30,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('mi_perfil', 'UserController@profile')->name('user.profile');
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RolController');
+    Route::resource('materias', 'MateriaController');
 });
