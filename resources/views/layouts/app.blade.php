@@ -103,45 +103,6 @@
                 <div class="col-3">
                     <div class="px-5 py-4">
                         <ul class="nav">
-                            @can('user.profile')
-                            <li
-                                class="nav-item  rounded-pill text-primary h5 w-75 {{ request()->is('mi_perfil') || request()->is('mi_perfil/*')  ? 'bg-lightpurple' : '' }}">
-                                <a class="nav-link text-decoration-none font-weight-bolder " href="
-                                {{route("user.profile")}}">
-                                    <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-person-fill"
-                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                                    </svg>
-                                    &nbsp;&nbsp;&nbsp;Mi Perfil</a>
-                            </li>
-                            @endcan
-                            @can('users.create')
-                            <li
-                                class="nav-item  rounded-pill text-primary h5 w-75 {{ request()->is('users') || request()->is('users/*')  ? 'bg-lightpurple' : '' }}">
-                                <a class="nav-link text-decoration-none font-weight-bolder "
-                                    href="{{route("users.index")}}">
-                                    <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-person-fill"
-                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                                    </svg>
-                                    &nbsp;&nbsp;&nbsp;Usuarios</a>
-                            </li>
-                            @endcan
-                            @can('roles.index')
-                            <li
-                                class="nav-item rounded-pill text-primary h5 w-75 {{ request()->is('roles') || request()->is('roles/*')  ? 'bg-lightpurple' : '' }}">
-                                <a class="nav-link text-decoration-none font-weight-bolder "
-                                    href="{{route("roles.index")}}">
-                                    <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-key-fill"
-                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-                                    </svg>
-                                    &nbsp;&nbsp;&nbsp;Roles</a>
-                            </li>
-                            @endcan
                             <li
                                 class="nav-item rounded-pill text-primary h5 w-75 {{ request()->is('temas') || request()->is('temas/*')  ? 'bg-lightpurple' : '' }}">
                                 <a class="nav-link text-decoration-none font-weight-bolder align-items-baseline"
@@ -176,6 +137,61 @@
                                     </svg>
                                     &nbsp;&nbsp;&nbsp;Mis Respuestas</a>
                             </li>
+                            @can('user.profile')
+                            <li
+                                class="nav-item  rounded-pill text-primary h5 w-75 {{ request()->is('mi_perfil') || request()->is('mi_perfil/*')  ? 'bg-lightpurple' : '' }}">
+                                <a class="nav-link text-decoration-none font-weight-bolder " href="
+                                {{route("user.profile")}}">
+                                    <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-person-fill"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                    </svg>
+                                    &nbsp;&nbsp;&nbsp;Mi Perfil</a>
+                            </li>
+                            @endcan
+                        </ul>
+                        <hr class="w-75">
+                        <ul class="nav">
+                            @can('users.create')
+                            <li
+                                class="nav-item  rounded-pill text-primary h5 w-75 {{ request()->is('users') || request()->is('users/*')  ? 'bg-lightpurple' : '' }}">
+                                <a class="nav-link text-decoration-none font-weight-bolder "
+                                    href="{{route("users.index")}}">
+                                    <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-person-fill"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                    </svg>
+                                    &nbsp;&nbsp;&nbsp;Usuarios</a>
+                            </li>
+                            @endcan
+                            @can('materias.index')
+                            <li
+                                class="nav-item rounded-pill text-primary h5 w-75 {{ request()->is('materias') || request()->is('materias/*')  ? 'bg-lightpurple' : '' }}">
+                                <a class="nav-link text-decoration-none font-weight-bolder "
+                                    href="{{route("materias.index")}}">
+                                    <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-folder-fill"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z" />
+                                    </svg>
+                                    &nbsp;&nbsp;&nbsp;Materias</a>
+                            </li>
+                            @endcan
+                            @can('roles.index')
+                            <li
+                                class="nav-item rounded-pill text-primary h5 w-75 {{ request()->is('roles') || request()->is('roles/*')  ? 'bg-lightpurple' : '' }}">
+                                <a class="nav-link text-decoration-none font-weight-bolder "
+                                    href="{{route("roles.index")}}">
+                                    <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-key-fill"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                                    </svg>
+                                    &nbsp;&nbsp;&nbsp;Roles</a>
+                            </li>
+                            @endcan
                         </ul>
                     </div>
                 </div>
