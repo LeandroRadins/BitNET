@@ -3,7 +3,7 @@
 @section('title', 'Temas')
 
 @section('content')
-    <div class="row mb-4">
+    <div class="row mb-2">
         <div class="col-11">
             <div class="d-flex justify-content-between">
                 <h1>Temas</h1>
@@ -15,12 +15,12 @@
 
         </div>
     </div>
-    <br>
+    {{-- <br> --}}
     <div class="row">
         <div class="col-11">
             @foreach ($temas as $tema)
 
-                <div class="card border-0 py-4">
+                <div class="card border-0 py-2">
                     <div class="card-body">
                         <div class="row shadow-sm">
                             <div class="col border-primary border-right-0 border-top-0 border-bottom-0 border-left pl-4">
@@ -79,6 +79,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @role('admin')
                             <div class="  d-flex flex-column">
                                 <div class="btn-group dropleft">
                                     <a class="btn " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -104,6 +105,7 @@
 
 
                             </div>
+                            @endrole
 
                         </div>
 

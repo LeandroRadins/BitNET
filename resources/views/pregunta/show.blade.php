@@ -21,8 +21,30 @@
             <div class="col px-0 shadow-sm">
 
                 <div class="card border-primary border-right-0 border-top-0 border-bottom-0 border-left rounded-0">
-                    <div class="d-flex pb-0 px-3 pt-0">
+                    <div class="d-flex justify-content-between pb-0 pl-3 pr-0 pt-2">
                         <h1>{{ $pregunta->titulo }}</h1>
+                        @role('admin')
+                        <div class="  d-flex flex-column">
+                            <div class="btn-group dropleft">
+                                <a class="btn " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </a>
+                                <div class="dropdown-menu">
+
+                                    <form action="{{ route('preguntas.destroy', ['tema' => $tema->id, 'pregunta' => $pregunta->id]) }}" method="POST"
+                                        onsubmit="return confirm('Esta seguro que desea borrar la pregunta {{ $pregunta->titulo }}?')">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">Eliminar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        @endrole
                     </div>
                     <div class="d-flex pb-0 px-3 pt-3">
                         <img class="rounded-pill" width="50px" height="50px"
@@ -50,7 +72,7 @@
                             </a>
                         </div>
                         <div class="ml-4">
-                            <a data-backdrop="false" class="text-dark text-decoration-none align-middle"
+                            <a type="button" data-backdrop="false" class="text-dark text-decoration-none align-middle"
                                 id="{{ $pregunta->id }}" data-toggle="modal" data-target="#respuestaModal">
                                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-reply-fill"
                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -84,13 +106,37 @@
             @foreach ($pregunta->respuestas as $respuesta)
                 <div class="col px-0 shadow-xs">
                     <div class="card border-0 rounded-0">
-                        <div class="d-flex pb-0 px-3 pt-3">
+                        <div class="d-flex pb-0 pl-3 pr-0 pt-3">
                             <img class="rounded-pill" width="50px" height="50px"
                                 src="https://instagram.fcnq2-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/85053037_800510723776174_5894956777147323725_n.jpg?_nc_ht=instagram.fcnq2-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=-24N8TQZH24AX9zCl8v&oh=5e2a8d35280cc4f779d03ac02aace9c3&oe=5F83FA80">
                             <div class="col">
                                 <span class="h5">{{ $respuesta->autor->name }}</span>
                                 <p class="text-muted">{{ $respuesta->created_at->diffForHumans() }}</p>
                             </div>
+                            @role('admin')
+                            <div class="d-flex flex-column pt-0 mt-0">
+                                <div class="btn-group dropleft">
+                                    <a class="btn " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical"
+                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                        </svg>
+                                    </a>
+                                    <div class="dropdown-menu">
+    
+                                        <form action="{{ route('respuesta.destroy', ['tema' => $tema->id, 'pregunta' => $pregunta->id, 'respuesta' => $respuesta->id]) }}" method="POST"
+                                            onsubmit="return confirm('Esta seguro que desea borrar la respuesta {{ $respuesta->desarrollo }}?')">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="dropdown-item">Eliminar</button>
+                                        </form>
+                                    </div>
+                                </div>
+    
+    
+                            </div>
+                            @endrole
                         </div>
                         <div class="card-body pr-0 mt-0 pb-3">
                             <p class="h4">{{ $respuesta->desarrollo }}</p>
@@ -140,7 +186,7 @@
 
 
         <div class="modal fade " id="respuestaModal" tabindex="-1" aria-labelledby="respuestaModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl shadow ">
+            <div class="modal-dialog modal-dialog-response modal-xl shadow ">
                 <div class="modal-content border-light rounded-0">
                     <div class="modal-header">
                         <h5 class="modal-title" id="respuestaLabel">RE: <span
@@ -167,7 +213,6 @@
         </div>
     </div>
 
-    </div>
 
 
 

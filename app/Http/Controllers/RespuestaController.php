@@ -86,8 +86,9 @@ class RespuestaController extends Controller
      * @param  \App\Respuesta  $respuesta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Respuesta $respuesta)
+    public function destroy(Tema $tema, Pregunta $pregunta, Respuesta $respuesta)
     {
-        //
+        $respuesta->delete();
+        return redirect()->back();
     }
 }

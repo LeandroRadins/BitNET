@@ -24,6 +24,8 @@ Route::middleware(['auth'])->group(function () {
     //Preguntas
     Route::get('temas/{tema}/nueva_pregunta', 'PreguntaController@create')->name('preguntas.create');
     Route::post('temas/{tema}/guardar_pregunta', 'PreguntaController@store')->name('preguntas.store');
+    Route::delete('temas/{tema}/{pregunta}/eliminar_pregunta', 'PreguntaController@destroy')->name('preguntas.destroy');
+    Route::delete('temas/{tema}/{pregunta}/{respuesta}/eliminar_respuesta', 'RespuestaController@destroy')->name('respuesta.destroy');
     Route::get('temas/{tema}/{pregunta}', 'PreguntaController@show')->name('preguntas.show');
     Route::post('temas/{tema}/{pregunta}/guardar_respuesta', 'RespuestaController@store')->name('respuesta.store');
     Route::post('temas/{tema}/{pregunta}/{respuesta}/guardar_reputacion', 'ReputacionController@store')->name('reputacion.store');

@@ -87,8 +87,10 @@ class PreguntaController extends Controller
      * @param  \App\Pregunta  $pregunta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pregunta $pregunta)
-    {
-        //
+    public function destroy(Tema $tema, Pregunta $pregunta)
+    {   
+        $pregunta->borrarRespuestas();
+        $pregunta->delete();
+        return redirect()->route('temas.show', ['tema'=> $tema->id]);
     }
 }
