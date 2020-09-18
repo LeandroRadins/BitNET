@@ -12,7 +12,7 @@ class Pregunta extends Model
 
     public function tema()
     {
-        return $this->belongsTo(Tema::class);
+        return $this->belongsTo(Tema::class, 'tema_id');
     }
 
     public function respuestas()

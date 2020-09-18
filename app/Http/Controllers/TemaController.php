@@ -81,8 +81,9 @@ class TemaController extends Controller
      * @param  \App\Tema  $tema
      * @return \Illuminate\Http\Response
      */
-    public function update(TemaStoreRequest $request, Tema $tema)
+    public function update(Tema $tema, TemaStoreRequest $request)
     {
+        
         $validated = $request->validated();
         $tema->update($validated);
         return redirect()->route('temas.show', $tema->id);
