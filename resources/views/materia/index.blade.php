@@ -20,6 +20,7 @@
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
+                    <th>URL</th>
                     {{-- <th>Cantidad de alumnos</th> --}}
                     {{-- Si sobra tiempo hacemos la cantidad de alumnos y profesores --}}
                     <th>Acciones</th>
@@ -37,14 +38,16 @@
                     <td>
                         {{ $materia->descripcion }}
                     </td>
-                    {{-- <td>
-                        {{ $materia->users }}
-                    </td> --}}
+                    <td>
+                        <a target="_blank" href="{{ $materia->link }}" class="text-decoration-none">
+                            {{ $materia->link }}
+                        </a>
+                    </td>
                     <td class="text-center">
-                        @can('materias.show')
+                        {{-- @can('materias.show')
                         <a class="btn btn-info btn-sm" style="color: white" role="button"
                             href="{{ route('materias.show', ['id' => $materia->id]) }}">Ver</a>
-                        @endcan
+                        @endcan --}}
                         @can('materias.edit')
                         <a class="btn btn-primary btn-sm" role="button"
                             href="{{ route('materias.edit', ['id' => $materia->id]) }}">Editar</a>

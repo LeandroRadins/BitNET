@@ -151,6 +151,7 @@
                             </li>
                             @endcan
                         </ul>
+                        @role('admin')
                         <hr class="w-75">
                         <ul class="nav">
                             @can('users.create')
@@ -193,6 +194,7 @@
                             </li>
                             @endcan
                         </ul>
+                        @endrole
                     </div>
                 </div>
                 <div class="col-9 ">
