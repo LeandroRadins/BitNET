@@ -103,11 +103,11 @@
                 <div class="col-3">
                     <div class="px-5 py-4">
                         <ul class="nav">
-                            @can('users.show')
+                            @can('user.profile')
                             <li
-                                class="nav-item  rounded-pill text-primary h5 w-75 {{ request()->is('miPerfil') || request()->is('miPerfil/*')  ? 'bg-lightpurple' : '' }}">
+                                class="nav-item  rounded-pill text-primary h5 w-75 {{ request()->is('mi_perfil') || request()->is('mi_perfil/*')  ? 'bg-lightpurple' : '' }}">
                                 <a class="nav-link text-decoration-none font-weight-bolder " href="
-                                {{route("users.profile")}}">
+                                {{route("user.profile")}}">
                                     <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-person-fill"
                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"

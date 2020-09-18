@@ -27,7 +27,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('temas/{tema}/{pregunta}', 'PreguntaController@show')->name('preguntas.show');
     Route::post('temas/{tema}/{pregunta}/guardar_respuesta', 'RespuestaController@store')->name('respuesta.store');
     Route::post('temas/{tema}/{pregunta}/{respuesta}/guardar_reputacion', 'ReputacionController@store')->name('reputacion.store');
-    Route::get('miPerfil', 'UserController@profile')->name('users.profile');
+    Route::get('mi_perfil', 'UserController@profile')->name('user.profile');
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RolController');
 });

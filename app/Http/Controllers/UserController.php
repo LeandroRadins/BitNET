@@ -107,7 +107,7 @@ class UserController extends Controller
         }
 
         if ($user->id == Auth::user()->id){
-            return  view('user.myProfile',compact('user', 'positivos', 'negativos'));
+            return redirect()->route('user.profile');
         }else{
             return view('user.show', compact('user', 'positivos', 'negativos'));
         }
@@ -129,7 +129,7 @@ class UserController extends Controller
                 }
             }
         }
-        return view('user.myProfile', compact('user', 'positivos', 'negativos'));
+        return view('perfil.mi_perfil', compact('user', 'positivos', 'negativos'));
     }
 
     /**
