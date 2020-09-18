@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Materia;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\MateriaStoreRequest;
 class MateriaController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:materias.index')->only('index');
+        $this->middleware('can:materias.create')->only(['store', 'create']);
+        $this->middleware('can:materias.show')->only('show');
+        $this->middleware('can:materias.edit')->only(['edit', 'update']);
+        $this->middleware('can:materias.destroy')->only('destroy');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +35,7 @@ class MateriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('materia.create');
     }
 
     /**
@@ -34,9 +44,11 @@ class MateriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MateriaStoreRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $materia = Materia::create($validated);
+        return redirect()->route('materias.index');
     }
 
     /**
@@ -47,7 +59,7 @@ class MateriaController extends Controller
      */
     public function show(Materia $materia)
     {
-        //
+        // Se podria agregar el show con los alumnos que cursan la materia y sus profesores
     }
 
     /**
@@ -58,7 +70,7 @@ class MateriaController extends Controller
      */
     public function edit(Materia $materia)
     {
-        //
+        return view('materia.edit', compact('materia'));
     }
 
     /**
@@ -68,9 +80,11 @@ class MateriaController extends Controller
      * @param  \App\Materia  $materia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Materia $materia)
+    public function update(MateriaStoreRequest $request, Materia $materia)
     {
-        //
+        $validated = $request->validated();
+        $materia->update($validated);
+        return redirect()->route('materias.index');
     }
 
     /**
@@ -81,6 +95,7 @@ class MateriaController extends Controller
      */
     public function destroy(Materia $materia)
     {
-        //
+        $materia->delete();
+        return redirect()->route('materias.index');
     }
 }
