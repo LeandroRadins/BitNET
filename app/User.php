@@ -61,5 +61,12 @@ class User extends Authenticatable
         return $this->hasMany(Reputacion::class);
     }
 
+    public function hasRole($role): bool
+    {
+        $slug = str_slug($role);
+
+        return (bool) $this->roles->where('slug', $slug);
+    }
+
 
 }
