@@ -54,10 +54,12 @@ Mi Perfil
                                         <div class="row px-3">
                                             <div class="col">
                                                 <h6 class="text-muted mb-3">Ultima Pregunta</h6>
-                                                @if (!empty($user->preguntas))
+                                                @if (count($user->preguntas) > 0)
                                                 <a href="" class="h5 text-decoration-none text-dark"
                                                     style="max-width: 350px;">
                                                     {{$user->preguntas->last()->consulta}}</a>
+                                                @else
+                                                <h5>No disponible</h5>
                                                 @endif
                                             </div>
                                             <div class="col">

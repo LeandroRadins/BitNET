@@ -61,5 +61,24 @@ class User extends Authenticatable
         return $this->hasMany(Reputacion::class);
     }
 
+    public function hasRole($role): bool
+    {
+        $slug = str_slug($role);
+
+        return (bool) $this->roles->where('slug', $slug);
+    }
+
+
+    public function scopeName($query, $name)
+    {
+        if($name)
+            return $query->where('name', 'LIKE', "%$name%");
+    }
+
+    public function scopeEmail($query, $email)
+    {
+        if($email)
+            return $query->where('email', 'LIKE', "%$email%");
+    }
 
 }

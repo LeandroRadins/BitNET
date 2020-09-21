@@ -30,11 +30,28 @@
                         <div class="form-group row">
                             <label class="col-3 col-form-label-lg h3" for="link">Link de la Materia</label>
                             <div class="col-9">
-                                <input type="text" class="form-control @error('link') is-invalid @enderror" id="link"
-                                    name="link" placeholder="Ingrese el link del aula virtual de la materia"
-                                    value="{{ $materia->link }}">
+                                <div class="input-group" id="url" data-target-input="nearest">
+                                    <input type="text" class="form-control @error('link') is-invalid @enderror"
+                                        id="link" name="link"
+                                        placeholder="Ingrese el link del aula virtual de la materia"
+                                        value="{{ $materia->link }}" />
+                                    <div class="input-group-append">
+                                        <div class="input-group-text" data-toggle="tooltip" data-placement="bottom"
+                                            title="Puede verificar si el link ingresado es correcto">
+                                            <a target="_blank" href="" name="verificarLink" id="verificarLink"
+                                                class="text-decoration-none">
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                    class="bi bi-arrow-right-circle-fill" fill="currentColor"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-11.5.5a.5.5 0 0 1 0-1h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5z" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                                 @error('link')
-                                <small id=" error" class="px-2 form-text" style="color: red">{{ $message }}</small>
+                                <small id="error" class="px-2 form-text" style="color: red">{{ $message }}</small>
                                 @enderror
                             </div>
                         </div>
@@ -64,4 +81,24 @@
 
     </div>
 </div>
+@push('scripts')
+<script>
+    $(document).ready(function () {
+        var a = document.getElementById('verificarLink');
+        var link = document.getElementById('link');
+        var value = $(link).val();
+        a.setAttribute("href", value);
+
+
+        $("#link").keyup(function () {
+            var value = $(this).val();
+            a.setAttribute("href", value);
+        });
+    });
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+@endpush
 @endsection

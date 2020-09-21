@@ -15,19 +15,32 @@ class RolesTableSeeder extends Seeder
     {
         Role::create([
             'name' => 'Admin',
-            'slug' => 'admin',
+            'slug' => 'ADMIN',
             'description' => 'Super usuario del sistema',
             'special' => 'all-access',
         ]);
 
         $regis = Role::create([
             'name' => 'Registrador',
-            'slug' => 'regis',
+            'slug' => 'REGIS',
             'description' => 'Usuario registrador del sistema',
         ]);
+        
+        $alumno = Role::create([
+            'name' => 'Alumno',
+            'slug' => 'ALUMNO',
+            'description' => 'Alumno de la universidad',
+        ]);
+        
+        $profesor = Role::create([
+            'name' => 'Profesor',
+            'slug' => 'PROFESOR',
+            'description' => 'Profesor de la universidad',
+        ]);
 
-        $permisRegis = Permission::where('slug', 'users.create')->firstOrFail();
-        $regis->permissions()->sync($permisRegis);
+        $regis->syncPermissions('users.create', 'users.index' ,'temas.index', 'preguntas.index', 'respuestas.index');
+        $alumno->syncPermissions('user.profile','temas.index','temas.show', 'preguntas.index','preguntas.show','preguntas.create', 'respuestas.index','respuestas.show','respuestas.create');
+        $profesor->syncPermissions('user.profile','temas.index','temas.show', 'preguntas.index','preguntas.show','preguntas.create', 'respuestas.index','respuestas.show','respuestas.create');
 
     }
 }

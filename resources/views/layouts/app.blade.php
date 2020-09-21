@@ -151,7 +151,7 @@
                             </li>
                             @endcan
                         </ul>
-                        @role('admin')
+                        @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('regis'))
                         <hr class="w-75">
                         <ul class="nav">
                             @can('users.create')
@@ -194,7 +194,7 @@
                             </li>
                             @endcan
                         </ul>
-                        @endrole
+                        @endif
                     </div>
                 </div>
                 <div class="col-9 ">

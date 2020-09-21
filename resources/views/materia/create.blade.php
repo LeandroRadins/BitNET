@@ -35,7 +35,8 @@
                                         id="link" name="link"
                                         placeholder="Ingrese el link del aula virtual de la materia" />
                                     <div class="input-group-append">
-                                        <div class="input-group-text">
+                                        <div class="input-group-text" data-toggle="tooltip" data-placement="bottom"
+                                            title="Puede verificar si el link ingresado es correcto">
                                             <a target="_blank" href="" name="verificarLink" id="verificarLink"
                                                 class="text-decoration-none">
                                                 <svg width="1em" height="1em" viewBox="0 0 16 16"
@@ -89,6 +90,9 @@
             a.setAttribute("href", value);
         });
     });
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>
 @endpush
 @endsection
