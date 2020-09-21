@@ -94,6 +94,5 @@
     $('[data-toggle="tooltip"]').tooltip()
     })
 </script>
-
 @endpush
 @endsection

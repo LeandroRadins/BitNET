@@ -55,6 +55,12 @@ class PermissionsTableSeeder extends Seeder
             'slug' => 'users',
             'description' => 'Permite listar a todos los menues de los usuarios del sistema',
         ]);
+        
+        Permission::create([
+            'name' => 'Mi perfil',
+            'slug' => 'user.profile',
+            'description' => 'Permite ver el perfil del usuario autenticado actualmente',
+        ]);
 
         Permission::create([
             'name' => 'Navegar usuarios',
@@ -195,6 +201,43 @@ class PermissionsTableSeeder extends Seeder
             'name' => 'Eliminar respuestas',
             'slug' => 'respuestas.destroy',
             'description' => 'Permite eliminar respuestas del sistema',
+        ]);
+
+        //Permisos de reputaciones
+        Permission::create([
+            'name' => 'Menu de reputaciones',
+            'slug' => 'reputaciones',
+            'description' => 'Permite listar a todos los menues de las reputaciones del sistema',
+        ]);
+
+        Permission::create([
+            'name' => 'Navegar reputaciones',
+            'slug' => 'reputaciones.index',
+            'description' => 'Permite listar a todas las reputaciones del sistema',
+        ]);
+
+        Permission::create([
+            'name' => 'Ver detalles de una respuesta',
+            'slug' => 'reputaciones.show',
+            'description' => 'Permite ver los detalles de una respuesta del sistema',
+        ]);
+
+        Permission::create([
+            'name' => 'Crear reputaciones',
+            'slug' => 'reputaciones.create',
+            'description' => 'Permite cargar reputaciones al sistema',
+        ]);
+
+        Permission::create([
+            'name' => 'Editar reputaciones',
+            'slug' => 'reputaciones.edit',
+            'description' => 'Permite editar los datos de las reputaciones del sistema',
+        ]);
+
+        Permission::create([
+            'name' => 'Eliminar reputaciones',
+            'slug' => 'reputaciones.destroy',
+            'description' => 'Permite eliminar reputaciones del sistema',
         ]);
     }
 }

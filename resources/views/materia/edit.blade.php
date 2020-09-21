@@ -33,7 +33,8 @@
                                 <div class="input-group" id="url" data-target-input="nearest">
                                     <input type="text" class="form-control @error('link') is-invalid @enderror"
                                         id="link" name="link"
-                                        placeholder="Ingrese el link del aula virtual de la materia" />
+                                        placeholder="Ingrese el link del aula virtual de la materia"
+                                        value="{{ $materia->link }}" />
                                     <div class="input-group-append">
                                         <div class="input-group-text" data-toggle="tooltip" data-placement="bottom"
                                             title="Puede verificar si el link ingresado es correcto">
@@ -80,4 +81,24 @@
 
     </div>
 </div>
+@push('scripts')
+<script>
+    $(document).ready(function () {
+        var a = document.getElementById('verificarLink');
+        var link = document.getElementById('link');
+        var value = $(link).val();
+        a.setAttribute("href", value);
+
+
+        $("#link").keyup(function () {
+            var value = $(this).val();
+            a.setAttribute("href", value);
+        });
+    });
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+@endpush
 @endsection
