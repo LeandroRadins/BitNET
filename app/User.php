@@ -61,11 +61,17 @@ class User extends Authenticatable
         return $this->hasMany(Reputacion::class);
     }
 
-    public function hasRole($role): bool
+    public function hasRole(string $slug): bool
     {
-        $slug = str_slug($role);
+        $roles = $this->roles;
+        foreach ($roles as $role) {
+            if ($role->slug == strtoupper ($slug)) {
+                return 1;
+            }else{
+                return 0;
+            }
+        }  
 
-        return (bool) $this->roles->where('slug', $slug);
     }
 
 
