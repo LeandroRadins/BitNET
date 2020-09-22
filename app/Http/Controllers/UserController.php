@@ -132,6 +132,18 @@ class UserController extends Controller
         return view('perfil.mi_perfil', compact('user', 'positivos', 'negativos'));
     }
 
+    public function mis_preguntas()
+    {
+        $preguntas = Auth::user()->preguntas;
+        return view('perfil.mis_preguntas', compact('preguntas'));
+    }
+
+    public function mis_respuestas()
+    {
+        $respuestas = Auth::user()->respuestas;
+        return view('perfil.mis_respuestas', compact('respuestas'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

@@ -32,9 +32,9 @@
                                 </h4>
                                 <p class="text-muted ">{{ $tema->descripcion }}</p>
                             </div>
-                            <div class="col border-left border-gray">
+                            <div class="col border-left border-gray ">
 
-                                <div class="row px-3">
+                                <div class="row px-3 pt-2">
                                     <div class="col">
                                         <h6 class=" text-muted mb-3">Consultas</h6>
                                         {{-- <h5 class="">asd</h5>

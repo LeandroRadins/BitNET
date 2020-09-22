@@ -51,7 +51,7 @@
                                 <div class="col border-secondary border-right-0 border-top-0 border-bottom-0 border-left ">
                                     <h3 class="pb-3 pt-0 text-bold">
                                         <a class="text-decoration-none text-dark "
-                                            href="{{ route('preguntas.show', ['tena' => $tema->id, 'pregunta' => $pregunta->id]) }}">
+                                            href="{{ route('preguntas.show', ['tema' => $tema->id, 'pregunta' => $pregunta->id]) }}">
                                             {{ $pregunta->titulo }}
                                         </a>
                                     </h3>

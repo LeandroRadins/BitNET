@@ -117,8 +117,8 @@
                                     </svg>
                                     &nbsp;&nbsp;&nbsp;Temas</a>
                             </li>
-                            <li class="nav-item  rounded-pill text-primary h5 w-75 ">
-                                <a class="nav-link text-decoration-none font-weight-bolder " href="#">
+                            <li class="nav-item  rounded-pill text-primary h5 w-75 {{ request()->is('mis_preguntas') || request()->is('mis_preguntas/*')  ? 'bg-lightpurple' : '' }}">
+                                <a class="nav-link text-decoration-none font-weight-bolder " href="{{route("user.mis_preguntas")}}">
                                     <svg width="1.3em" height="1.3em" viewBox="0 0 16 16"
                                         class="bi bi-question-circle-fill" fill="currentColor"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -127,8 +127,8 @@
                                     </svg>
                                     &nbsp;&nbsp;&nbsp;Mis Preguntas</a>
                             </li>
-                            <li class="nav-item  rounded-pill text-primary h5 w-75 ">
-                                <a class="nav-link text-decoration-none font-weight-bolder " href="#">
+                            <li class="nav-item  rounded-pill text-primary h5 w-75 {{ request()->is('mis_respuestas') || request()->is('mis_respuestas/*')  ? 'bg-lightpurple' : '' }}">
+                                <a class="nav-link text-decoration-none font-weight-bolder " href="{{route("user.mis_respuestas")}}">
                                     <svg width="1.3em" height="1.3em" viewBox="0 0 16 16"
                                         class="bi bi-chat-square-text-fill" fill="currentColor"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -152,8 +152,8 @@
                             @endcan
                         </ul>
                         @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('regis'))
-                        <hr class="w-75">
                         <ul class="nav">
+                            <hr class="w-75 ">
                             @can('users.create')
                             <li
                                 class="nav-item  rounded-pill text-primary h5 w-75 {{ request()->is('users') || request()->is('users/*')  ? 'bg-lightpurple' : '' }}">
