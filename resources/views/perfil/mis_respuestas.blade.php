@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Mis Preguntas
+Mis Respuestas
 @endsection
 
 
@@ -12,9 +12,9 @@ Mis Preguntas
             <div class="col">
                 <a class="h4 text-decoration-none" href="{{ route('home') }}">Inicio</a>
                 <div class="d-flex justify-content-between">
-                    <h1 class="text-uppercase">Mis Preguntas</h1>
+                    <h1 class="text-uppercase">Mis Respuestas</h1>
                 </div>
-
+                <br>
                 @foreach ($respuestas as $respuesta)
                 <div class="col px-0 shadow-xs">
                     <div class="card border-0 rounded-0">
