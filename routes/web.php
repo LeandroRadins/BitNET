@@ -30,6 +30,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('temas/{tema}/{pregunta}/guardar_respuesta', 'RespuestaController@store')->name('respuesta.store');
     Route::post('temas/{tema}/{pregunta}/{respuesta}/guardar_reputacion', 'ReputacionController@store')->name('reputacion.store');
     Route::get('mi_perfil', 'UserController@profile')->name('user.profile');
+    Route::get('mis_preguntas', 'UserController@mis_preguntas')->name('user.mis_preguntas');
+    Route::get('mis_respuestas', 'UserController@mis_respuestas')->name('user.mis_respuestas');
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RolController');
     Route::resource('materias', 'MateriaController');
