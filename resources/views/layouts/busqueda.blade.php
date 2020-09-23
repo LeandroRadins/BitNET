@@ -142,7 +142,7 @@ Busqueda: {{$busqueda}}
                             </div>
                             <div class="col">
                                 <h6 class=" text-black-50 mb-3 ">Actividad</h6>
-                                <h5 class="">
+                                <h5 class="text-capitalize">
                                     @if (count($pregunta->respuestas) > 0)
                                     {{ $pregunta->respuestas->last()->created_at->diffForHumans() }}
 
@@ -181,11 +181,9 @@ Busqueda: {{$busqueda}}
                                 </svg>
                             </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item"
-                                    href="{{ route('preguntas.edit', ['id' => $pregunta->id]) }}">Editar</a>
-                                <div class="dropdown-divider"></div>
-
-                                <form action="{{ route('preguntas.destroy', $pregunta->id) }}" method="POST"
+                                <form
+                                    action="{{ route('preguntas.destroy', ['tema' => $pregunta->tema->id, 'pregunta' => $pregunta->id]) }}"
+                                    method="POST"
                                     onsubmit="return confirm('Esta seguro que desea borrar la pregunta {{ $pregunta->nombre }}?')">
                                     @method('DELETE')
                                     @csrf
@@ -205,29 +203,72 @@ Busqueda: {{$busqueda}}
         @endif
         @if ((count($respuestas) > 0))
         @foreach ($respuestas as $respuesta)
-        <div class="col px-0 shadow-xs">
-            <div class="card border-0 rounded-0">
-                <a class="text-decoration-none pl-3 pr-0 pt-3 h5"
-                    href="{{route('preguntas.show',['tema' => $respuesta->pregunta->tema->id, 'pregunta' => $respuesta->pregunta->id])}}">Ir
-                    a Pregunta</a>
-                <div class="d-flex pb-0 pl-3 pr-0 pt-3">
-                    <img class="rounded-pill" width="50px" height="50px"
-                        src="https://instagram.fcnq2-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/85053037_800510723776174_5894956777147323725_n.jpg?_nc_ht=instagram.fcnq2-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=-24N8TQZH24AX9zCl8v&oh=5e2a8d35280cc4f779d03ac02aace9c3&oe=5F83FA80">
-                    <div class="col">
-                        <span class="h5">{{ $respuesta->autor->name }}</span>
-                        <p class="text-muted">{{ $respuesta->created_at->diffForHumans() }}</p>
+        <div class="card border-0 py-2">
+            <div class="card-body">
+                <div class="row shadow-sm">
+                    <div class="col-9 border-primary border-right-0 border-top-0 border-bottom-0 border-left pl-4">
+                        <h6 class="pb-3 pt-1" style="color:  #5257EA">
+                            RESPUESTA
+                        </h6>
+                        <h4 class="pb-3 pt-1">
+                            <a class="text-decoration-none text-dark text-uppercase"
+                                href="{{route('preguntas.show',['tema' => $respuesta->pregunta->tema->id, 'pregunta' => $respuesta->pregunta->id])}}">
+                                {{ $respuesta->desarrollo }}
+                            </a>
+                        </h4>
+                        <p class="text-muted "> Respuesta a: {{ $respuesta->pregunta->titulo }}</p>
                     </div>
+                    <div class="col border-left border-gray">
 
-                </div>
-                <div class="card-body pr-0 mt-0 pb-3">
-                    <p class="h4">{{ $respuesta->desarrollo }}</p>
+                        <div class="row px-3">
+                            <div class="col">
+                                <h6 class=" text-black-50 mb-3">Autor</h6>
+                                <h5 class="">{{ $respuesta->autor->name }}</h5>
+
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row px-3">
+                            <div class="col">
+                                <h6 class=" text-black-50 mb-3">Fecha</h6>
+                                <h5 class="text-capitalize">
+                                    {{ $respuesta->created_at->diffForHumans() }}
+                                </h5>
+                                <br>
+
+                            </div>
+                        </div>
+                    </div>
+                    @if (auth()->user()->hasRole('admin'))
+                    <div class="  d-flex flex-column">
+                        <div class="btn-group dropleft">
+                            <a class="btn " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical"
+                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                </svg>
+                            </a>
+                            <div class="dropdown-menu">
+                                <form
+                                    action="{{ route('respuesta.destroy', ['tema' => $respuesta->pregunta->tema->id, 'pregunta' => $respuesta->pregunta->id, 'respuesta' => $respuesta->id]) }}"
+                                    method="POST"
+                                    onsubmit="return confirm('Esta seguro que desea borrar la respuesta {{ $respuesta->desarrollo }}?')">
+                                    @method('DELETE')
+                                    @csrf
+                                    <input type="hidden" name="busqueda" value="{{$busqueda}}">
+                                    <button type="submit" class="dropdown-item">Eliminar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
 
                 </div>
 
             </div>
-
         </div>
-        <br>
+        <hr>
         @endforeach
         @endif
     </div>
