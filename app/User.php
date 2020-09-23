@@ -13,7 +13,6 @@ class User extends Authenticatable
     use Notifiable;
     use SoftDeletes;
     use HasRolesAndPermissions;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -73,18 +72,4 @@ class User extends Authenticatable
         }  
 
     }
-
-
-    public function scopeName($query, $name)
-    {
-        if($name)
-            return $query->where('name', 'LIKE', "%$name%");
-    }
-
-    public function scopeEmail($query, $email)
-    {
-        if($email)
-            return $query->where('email', 'LIKE', "%$email%");
-    }
-
 }

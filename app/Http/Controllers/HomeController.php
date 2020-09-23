@@ -36,6 +36,7 @@ class HomeController extends Controller
 	    if($busqueda != ""){
 		    $temas = Tema::where ( 'nombre', 'LIKE', '%' . $busqueda . '%' )->orWhere ( 'descripcion', 'LIKE', '%' . $busqueda . '%' )->get ();
 		    $preguntas = Pregunta::where ( 'titulo', 'LIKE', '%' . $busqueda . '%' )->orWhere ( 'consulta', 'LIKE', '%' . $busqueda . '%' )->get ();
+		    $respuestas = Respuesta::where ( 'desarrollo', 'LIKE', '%' . $busqueda . '%' )->orWhere ( 'consulta', 'LIKE', '%' . $busqueda . '%' )->get ();
             if (count ( $temas ) > 0 || count ( $preguntas ) > 0){
                 return view ( 'layouts.busqueda', compact('busqueda', 'preguntas', 'temas'))->withQuery ( $busqueda );
             }

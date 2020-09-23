@@ -14,7 +14,6 @@ Mi Perfil
                 <div class="d-flex justify-content-between">
                     <h1 class="text-uppercase">Mi Perfil</h1>
                 </div>
-
                 <div class="row">
                     <div class="col-11">
                         <div class="card border-0 py-4">
@@ -55,8 +54,7 @@ Mi Perfil
                                             <div class="col">
                                                 <h6 class="text-muted mb-3">Ultima Pregunta</h6>
                                                 @if (count($user->preguntas) > 0)
-                                                <a href="{{ route('preguntas.show', ['tema' => $user->preguntas->last()->tema->id, 'pregunta' => $
-                                                user->preguntas->last()->id]) }}"
+                                                <a href="{{ route('preguntas.show', ['tema' => $user->preguntas->last()->tema->id, 'pregunta' => $user->preguntas->last()->id]) }}"
                                                     class="h5 text-decoration-none text-dark" style="max-width: 350px;">
                                                     {{$user->preguntas->last()->consulta}}</a>
                                                 @else
