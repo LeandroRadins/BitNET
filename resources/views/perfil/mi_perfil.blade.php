@@ -19,12 +19,16 @@ Mi Perfil
                         <div class="card border-0 py-4">
                             <div class="card-body">
                                 <div class="row">
-                                    <div
-                                        class="col border-primary border-right-0 border-top-0 border-bottom-0 border-left ">
-                                        <h4 class="pb-3 pt-1">
-                                            {{$user->name}}
-                                        </h4>
-                                        <p class="text-muted">{{$user->email}}</p>
+                                    <div class="col border-primary border-right-0 border-top-0 border-bottom-0 border-left ">
+                                        <div class="d-flex">
+                                            <div class="circle bg-secondary">
+                                                <span class="initials text-uppercase">{{substr($user->name, 0, 1)}}</span>
+                                            </div>
+                                            <div class="col">
+                                                <h4 class="pt-1 mb-0">{{$user->name}} <span class="text-muted">({{$user->roles->first()->name}})</span> </h4>
+                                                <p class="text-muted">{{$user->email}}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col border-left border-gray">
                                         <div class="row px-3">
