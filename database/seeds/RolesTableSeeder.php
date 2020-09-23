@@ -13,7 +13,7 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        Role::create([
+        $admin = Role::create([
             'name' => 'Admin',
             'slug' => 'ADMIN',
             'description' => 'Super usuario del sistema',
@@ -37,7 +37,7 @@ class RolesTableSeeder extends Seeder
             'slug' => 'PROFESOR',
             'description' => 'Profesor de la universidad',
         ]);
-
+        
         $regis->syncPermissions('users.create', 'users.index' ,'temas.index', 'preguntas.index', 'respuestas.index');
         $alumno->syncPermissions('user.profile','temas.index','temas.show', 'preguntas.index','preguntas.show','preguntas.create', 'respuestas.index','respuestas.show','respuestas.create');
         $profesor->syncPermissions('user.profile','temas.index','temas.show', 'preguntas.index','preguntas.show','preguntas.create', 'respuestas.index','respuestas.show','respuestas.create');

@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @stack('styles')
 </head>
 
 <body class="bg-white">
@@ -41,13 +42,14 @@
                 {{-- Boton de busqueda --}}
                 <ul class="nav navbar-nav w-100 justify-content-center ">
                     <li class="nav-item">
-                        <form class="form-inline ">
+                        <form class="form-inline" action="{{ route('home.buscar')}}" method="POST" role="search">
+                            @csrf
                             <div class="input-group">
                                 <input
                                     class="form-control py-2 pl-5 rounded-pill border-0 bg-light mr-1 pr-5 text-center"
-                                    type="search" placeholder="Buscar">
+                                    type="search" placeholder="Buscar" name="buscar">
                                 <span class="input-group-append">
-                                    <button class="btn text-muted rounded-pill border-0 ml-n5" type="button">
+                                    <button class="btn text-muted rounded-pill border-0 ml-n5" type="submit">
                                         <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-search"
                                             fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
@@ -103,6 +105,7 @@
                 <div class="col-3">
                     <div class="px-5 py-4">
                         <ul class="nav">
+                            @can('temas.index')
                             <li
                                 class="nav-item rounded-pill text-primary h5 w-75 {{ request()->is('temas') || request()->is('temas/*')  ? 'bg-lightpurple' : '' }}">
                                 <a class="nav-link text-decoration-none font-weight-bolder align-items-baseline"
@@ -117,8 +120,13 @@
                                     </svg>
                                     &nbsp;&nbsp;&nbsp;Temas</a>
                             </li>
-                            <li class="nav-item  rounded-pill text-primary h5 w-75 {{ request()->is('mis_preguntas') || request()->is('mis_preguntas/*')  ? 'bg-lightpurple' : '' }}">
-                                <a class="nav-link text-decoration-none font-weight-bolder " href="{{route("user.mis_preguntas")}}">
+                            @endcan
+                            @can('user.preguntas')
+                            @if (auth()->user()->hasRole('admin') == false)
+                            <li
+                                class="nav-item  rounded-pill text-primary h5 w-75 {{ request()->is('mis_preguntas') || request()->is('mis_preguntas/*')  ? 'bg-lightpurple' : '' }}">
+                                <a class="nav-link text-decoration-none font-weight-bolder "
+                                    href="{{route("user.mis_preguntas")}}">
                                     <svg width="1.3em" height="1.3em" viewBox="0 0 16 16"
                                         class="bi bi-question-circle-fill" fill="currentColor"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -127,8 +135,14 @@
                                     </svg>
                                     &nbsp;&nbsp;&nbsp;Mis Preguntas</a>
                             </li>
-                            <li class="nav-item  rounded-pill text-primary h5 w-75 {{ request()->is('mis_respuestas') || request()->is('mis_respuestas/*')  ? 'bg-lightpurple' : '' }}">
-                                <a class="nav-link text-decoration-none font-weight-bolder " href="{{route("user.mis_respuestas")}}">
+                            @endif
+                            @endcan
+                            @can('user.respuestas')
+                            @if (auth()->user()->hasRole('admin') == false)
+                            <li
+                                class="nav-item  rounded-pill text-primary h5 w-75 {{ request()->is('mis_respuestas') || request()->is('mis_respuestas/*')  ? 'bg-lightpurple' : '' }}">
+                                <a class="nav-link text-decoration-none font-weight-bolder "
+                                    href="{{route("user.mis_respuestas")}}">
                                     <svg width="1.3em" height="1.3em" viewBox="0 0 16 16"
                                         class="bi bi-chat-square-text-fill" fill="currentColor"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -137,7 +151,10 @@
                                     </svg>
                                     &nbsp;&nbsp;&nbsp;Mis Respuestas</a>
                             </li>
+                            @endif
+                            @endcan
                             @can('user.profile')
+                            @if (auth()->user()->hasRole('admin') == false)
                             <li
                                 class="nav-item  rounded-pill text-primary h5 w-75 {{ request()->is('mi_perfil') || request()->is('mi_perfil/*')  ? 'bg-lightpurple' : '' }}">
                                 <a class="nav-link text-decoration-none font-weight-bolder " href="
@@ -149,6 +166,7 @@
                                     </svg>
                                     &nbsp;&nbsp;&nbsp;Mi Perfil</a>
                             </li>
+                            @endif
                             @endcan
                         </ul>
                         @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('regis'))

@@ -36,7 +36,7 @@
                     <td>
                         {{ $rol->description }}
                     </td>
-                    <td class="text-center">
+                    <td class="text-center" width="15%">
                         @can('roles.edit')
                         <a class="btn btn-primary btn-sm" role="button"
                             href="{{ route('roles.edit', ['id' => $rol->id]) }}">Editar</a>

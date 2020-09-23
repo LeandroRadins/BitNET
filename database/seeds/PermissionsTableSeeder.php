@@ -61,6 +61,18 @@ class PermissionsTableSeeder extends Seeder
             'slug' => 'user.profile',
             'description' => 'Permite ver el perfil del usuario autenticado actualmente',
         ]);
+        
+        Permission::create([
+            'name' => 'Mis preguntas',
+            'slug' => 'user.preguntas',
+            'description' => 'Permite ver las preguntas realizadas por el usuario',
+        ]);
+        
+        Permission::create([
+            'name' => 'Mis respuestas',
+            'slug' => 'user.respuestas',
+            'description' => 'Permite ver las respuestas realizadas por el usuario',
+        ]);
 
         Permission::create([
             'name' => 'Navegar usuarios',

@@ -22,7 +22,11 @@
                     <th>Roles</th>
                     <th>Email</th>
                     <th>Fecha de Nacimiento</th>
+
+                    @if (Auth::user()->can('users.show') or Auth::user()->can('users.edit') or
+                    Auth::user()->can('users.destroy'))
                     <th>Acciones</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -46,6 +50,8 @@
                     <td>
                         {{ \Carbon\Carbon::parse($user->fechaNac)->format('d/m/Y') }}
                     </td>
+                    @if (Auth::user()->can('users.show') or Auth::user()->can('users.edit') or
+                    Auth::user()->can('users.destroy'))
                     <td class="text-center">
                         @can('users.show')
                         <a class="btn btn-info btn-sm" style="color: white" role="button"
@@ -64,6 +70,7 @@
                         </form>
                         @endcan
                     </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>

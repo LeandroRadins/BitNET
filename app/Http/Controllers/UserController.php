@@ -20,6 +20,9 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:user.profile')->only('profile');
+        $this->middleware('can:user.preguntas')->only('mis_preguntas');
+        $this->middleware('can:user.profile')->only('mis_respuestas');
         $this->middleware('can:users.index')->only('index');
         $this->middleware('can:users.create')->only(['store', 'create']);
         $this->middleware('can:users.show')->only('show');
