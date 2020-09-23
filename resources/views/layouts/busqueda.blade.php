@@ -132,33 +132,23 @@ Busqueda: {{$busqueda}}
                         </h4>
                         <p class="text-muted ">{{ $pregunta->consulta }}</p>
                     </div>
-                    <div class="col border-left border-gray ">
+                    <div class="col border-left border-gray">
 
-                        <div class="row px-3 pt-2">
+                        <div class="row px-3">
                             <div class="col">
-                                <h6 class=" text-muted mb-3">Consultas</h6>
-                                {{-- <h5 class="">asd</h5>
-                                        --}}
-                                {{-- <h5 class="">{{ count($tema->preguntas) }}</h5> --}}
-
+                                <h6 class=" text-black-50 mb-3">Respuestas</h6>
+                                <h5 class="">{{ count($pregunta->respuestas) }}</h5>
 
                             </div>
                             <div class="col">
-                                <h6 class=" text-muted mb-3">Usuarios</h6>
+                                <h6 class=" text-black-50 mb-3 ">Actividad</h6>
                                 <h5 class="">
-                                    {{-- {{ $tema->interaccionUsuarios() }} --}}
-                                </h5>
+                                    @if (count($pregunta->respuestas) > 0)
+                                    {{ $pregunta->respuestas->last()->created_at->diffForHumans() }}
 
-                            </div>
-                            <div class="col">
-                                <h6 class=" text-muted mb-3 ">Actividad</h6>
-                                <h5 class="text-truncate" style="max-width: 350px;">
-                                    {{-- @if (count($tema->preguntas) > 0) --}}
-
-                                    {{-- {{ $tema->preguntas->first()->created_at->diffForHumans() }} --}}
-                                    {{-- @else
-                                    No hay consultas todavia.
-                                    @endif --}}
+                                    @else
+                                    -
+                                    @endif
                                 </h5>
 
                             </div>
@@ -166,17 +156,17 @@ Busqueda: {{$busqueda}}
                         <hr>
                         <div class="row px-3">
                             <div class="col">
-                                <h6 class=" text-muted mb-3">Ultima Consulta</h6>
+                                <h6 class=" text-black-50 mb-3">Ultima Respuesta</h6>
                                 <h5 class="text-truncate" style="max-width: 350px;">
-                                    {{-- @if (count($tema->preguntas) > 0) --}}
-
-                                    {{-- {{ $tema->preguntas->last()->autor->name . ': ' . $tema->preguntas->last()->titulo }}
-                                    --}}
-                                    {{-- @else
-                                    No hay consultas todavia.
-                                    @endif --}}
+                                    @if (count($pregunta->respuestas) > 0)
+                                    <span>{{ $pregunta->respuestas->last()->autor->name }}: </span>
+                                    {{ $pregunta->respuestas->last()->desarrollo }}
+                                    @else
+                                    No hay respuestas todavia.
+                                    @endif
                                 </h5>
                                 <br>
+
                             </div>
                         </div>
                     </div>
@@ -211,6 +201,33 @@ Busqueda: {{$busqueda}}
             </div>
         </div>
         <hr>
+        @endforeach
+        @endif
+        @if ((count($respuestas) > 0))
+        @foreach ($respuestas as $respuesta)
+        <div class="col px-0 shadow-xs">
+            <div class="card border-0 rounded-0">
+                <a class="text-decoration-none pl-3 pr-0 pt-3 h5"
+                    href="{{route('preguntas.show',['tema' => $respuesta->pregunta->tema->id, 'pregunta' => $respuesta->pregunta->id])}}">Ir
+                    a Pregunta</a>
+                <div class="d-flex pb-0 pl-3 pr-0 pt-3">
+                    <img class="rounded-pill" width="50px" height="50px"
+                        src="https://instagram.fcnq2-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/85053037_800510723776174_5894956777147323725_n.jpg?_nc_ht=instagram.fcnq2-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=-24N8TQZH24AX9zCl8v&oh=5e2a8d35280cc4f779d03ac02aace9c3&oe=5F83FA80">
+                    <div class="col">
+                        <span class="h5">{{ $respuesta->autor->name }}</span>
+                        <p class="text-muted">{{ $respuesta->created_at->diffForHumans() }}</p>
+                    </div>
+
+                </div>
+                <div class="card-body pr-0 mt-0 pb-3">
+                    <p class="h4">{{ $respuesta->desarrollo }}</p>
+
+                </div>
+
+            </div>
+
+        </div>
+        <br>
         @endforeach
         @endif
     </div>

@@ -14,7 +14,6 @@
                     <div class="d-flex justify-content-between">
                         <h1 class="text-uppercase">Mis Preguntas</h1>
                     </div>
-
                     @foreach ($preguntas as $pregunta)
                         <div class="card border-0">
                             <div class="card-body">
@@ -39,7 +38,6 @@
                                             <div class="col">
                                                 <span class="h5">{{ $pregunta->autor->name }}</span>
                                                 <p class="text-muted">{{ $pregunta->created_at->diffForHumans() }}</p>
-
                                             </div>
 
                                         </div>
@@ -61,7 +59,6 @@
                                                 <h5 class="">
                                                     @if (count($pregunta->respuestas) > 0)
                                                         {{ $pregunta->respuestas->last()->created_at->diffForHumans() }}
-
                                                     @else
                                                         -
                                                     @endif
@@ -79,6 +76,7 @@
                                                 </h5>
                                                 <br>
 
+
                                             </div>
                                         </div>
                                     </div>
@@ -92,3 +90,4 @@
             </div>
         </div>
     @endsection
+

@@ -39,8 +39,8 @@ class RolesTableSeeder extends Seeder
         ]);
         
         $regis->syncPermissions('users.create', 'users.index' ,'temas.index', 'preguntas.index', 'respuestas.index');
-        $alumno->syncPermissions('user.profile','temas.index','temas.show', 'preguntas.index','preguntas.show','preguntas.create', 'respuestas.index','respuestas.show','respuestas.create');
-        $profesor->syncPermissions('user.profile','temas.index','temas.show', 'preguntas.index','preguntas.show','preguntas.create', 'respuestas.index','respuestas.show','respuestas.create');
+        $alumno->syncPermissions('user.profile', 'user.preguntas', 'user.respuestas', 'temas.index','temas.show', 'preguntas.index','preguntas.show','preguntas.create', 'respuestas.index','respuestas.show','respuestas.create');
+        $profesor->syncPermissions('user.profile','user.preguntas', 'user.respuestas','temas.index','temas.show', 'preguntas.index','preguntas.show','preguntas.create', 'respuestas.index','respuestas.show','respuestas.create');
 
     }
 }

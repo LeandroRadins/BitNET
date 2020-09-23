@@ -14,7 +14,6 @@ Mi Perfil
                 <div class="d-flex justify-content-between">
                     <h1 class="text-uppercase">Mi Perfil</h1>
                 </div>
-
                 <div class="row">
                     <div class="col-11">
                         <div class="card border-0 py-4">
