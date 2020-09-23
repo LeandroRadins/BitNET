@@ -106,10 +106,17 @@ class UserController extends Controller
             }
         }
 
+        $materias = collect();
+        if (!is_null($user->materias)){
+            foreach ($user->materias as $materia) {
+                $materias->push($materia);
+            }
+        }
+
         if ($user->id == Auth::user()->id){
             return redirect()->route('user.profile');
         }else{
-            return view('user.show', compact('user', 'positivos', 'negativos'));
+            return view('user.show', compact('user', 'positivos', 'negativos', 'materias'));
         }
     }
 
@@ -129,7 +136,15 @@ class UserController extends Controller
                 }
             }
         }
-        return view('perfil.mi_perfil', compact('user', 'positivos', 'negativos'));
+
+        $materias = collect();
+        if (!is_null($user->materias)){
+            foreach ($user->materias as $materia) {
+                $materias->push($materia);
+            }
+        }
+
+        return view('perfil.mi_perfil', compact('user', 'positivos', 'negativos', 'materias'));
     }
 
     public function mis_preguntas()
