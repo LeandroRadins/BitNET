@@ -27,8 +27,7 @@ Mis Preguntas
                                     </a>
                                 </h3>
                                 <div class="d-flex pb-0 ">
-                                    <img class="rounded-pill" width="50px" height="50px"
-                                        src="https://instagram.fcnq2-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/85053037_800510723776174_5894956777147323725_n.jpg?_nc_ht=instagram.fcnq2-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=-24N8TQZH24AX9zCl8v&oh=5e2a8d35280cc4f779d03ac02aace9c3&oe=5F83FA80">
+                                    <img class="rounded-pill" width="50px" height="50px" src="">
                                     <div class="col">
                                         <span class="h5">{{ $pregunta->autor->name }}</span>
                                         <p class="text-muted">{{ $pregunta->created_at->diffForHumans() }}</p>
@@ -53,10 +52,10 @@ Mis Preguntas
                                         <h6 class=" text-black-50 mb-3 ">Actividad</h6>
                                         <h5 class="">
                                             @if (count($pregunta->respuestas) > 0)
-                                                {{ $pregunta->respuestas->last()->created_at->diffForHumans() }}
-                                                
+                                            {{ $pregunta->respuestas->last()->created_at->diffForHumans() }}
+
                                             @else
-                                                -
+                                            -
                                             @endif
                                         </h5>
 
@@ -66,8 +65,9 @@ Mis Preguntas
                                 <div class="row px-3">
                                     <div class="col">
                                         <h6 class=" text-black-50 mb-3">Tema</h6>
-                                        <h5 class="text-truncate" style="max-width: 350px;">
-                                            <a href="{{ route('temas.show', ['tema' => $pregunta->tema->id]) }}">{{$pregunta->tema->nombre}}</a>
+                                        <h5 class="text-decoration-none" style="max-width: 350px;">
+                                            <a class="text-decoration-none"
+                                                href="{{ route('temas.show', ['tema' => $pregunta->tema->id]) }}">{{$pregunta->tema->nombre}}</a>
                                         </h5>
                                         <br>
 
@@ -79,8 +79,8 @@ Mis Preguntas
                     </div>
                 </div>
                 <hr>
-            @endforeach
+                @endforeach
+            </div>
         </div>
     </div>
-</div>
-@endsection
+    @endsection
