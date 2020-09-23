@@ -32,6 +32,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('mi_perfil', 'UserController@profile')->name('user.profile');
     Route::get('mis_preguntas', 'UserController@mis_preguntas')->name('user.mis_preguntas');
     Route::get('mis_respuestas', 'UserController@mis_respuestas')->name('user.mis_respuestas');
+    Route::post('buscar', 'HomeController@buscar')->name('home.buscar');
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RolController');
     Route::resource('materias', 'MateriaController');
