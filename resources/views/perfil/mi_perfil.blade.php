@@ -19,13 +19,17 @@ Mi Perfil
                         <div class="card border-0 py-4">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col border-primary border-right-0 border-top-0 border-bottom-0 border-left ">
+                                    <div
+                                        class="col border-primary border-right-0 border-top-0 border-bottom-0 border-left ">
                                         <div class="d-flex">
                                             <div class="circle bg-secondary">
-                                                <span class="initials text-uppercase">{{substr($user->name, 0, 1)}}</span>
+                                                <span
+                                                    class="initials text-uppercase">{{substr($user->name, 0, 1)}}</span>
                                             </div>
                                             <div class="col">
-                                                <h4 class="pt-1 mb-0">{{$user->name}} <span class="text-muted">({{$user->roles->first()->name}})</span> </h4>
+                                                <h4 class="pt-1 mb-0">{{$user->name}} <span
+                                                        class="text-muted">({{$user->roles->first()->name}})</span>
+                                                </h4>
                                                 <p class="text-muted">{{$user->email}}</p>
                                             </div>
                                         </div>
@@ -98,6 +102,7 @@ Mi Perfil
                                     <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Descripción</th>
+                                    <th>URL</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -112,6 +117,11 @@ Mi Perfil
                                     </td>
                                     <td>
                                         {{ $materia->descripcion }}
+                                    </td>
+                                    <td>
+                                        <a target="_blank" href="{{ $materia->link }}" class="text-decoration-none">
+                                            {{ $materia->link }}
+                                        </a>
                                     </td>
                                     <td class="text-center" width="5%">
                                         @can('materias.destroy')
