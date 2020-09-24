@@ -251,5 +251,42 @@ class PermissionsTableSeeder extends Seeder
             'slug' => 'reputaciones.destroy',
             'description' => 'Permite eliminar reputaciones del sistema',
         ]);
+
+        //Permisos de materias
+        Permission::create([
+            'name' => 'Menu de materias',
+            'slug' => 'materias',
+            'description' => 'Permite listar a todos los menues de las materias del sistema',
+        ]);
+
+        Permission::create([
+            'name' => 'Navegar materias',
+            'slug' => 'materias.index',
+            'description' => 'Permite listar a todas las materias del sistema',
+        ]);
+
+        Permission::create([
+            'name' => 'Ver detalles de una materias',
+            'slug' => 'materias.show',
+            'description' => 'Permite ver los detalles de una materia del sistema',
+        ]);
+
+        Permission::create([
+            'name' => 'Crear materias',
+            'slug' => 'materias.create',
+            'description' => 'Permite cargar materias al sistema',
+        ]);
+
+        Permission::create([
+            'name' => 'Editar materias',
+            'slug' => 'materias.edit',
+            'description' => 'Permite editar los datos de las materias del sistema',
+        ]);
+
+        Permission::create([
+            'name' => 'Eliminar materias',
+            'slug' => 'materias.destroy',
+            'description' => 'Permite eliminar materias del sistema',
+        ]);
     }
 }
