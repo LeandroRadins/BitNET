@@ -71,6 +71,12 @@ class UserController extends Controller
                 $existe = true;
                 $restore = User::withTrashed()->find($user->id);
                 $restore->restore();
+                $restore->update($request->all());
+                $restore->fechaNac = Carbon::parse($request->fechaNac);
+                $restore->password = Hash::make($request->password);
+                $restore->save();
+                $restore->roles()->sync($request->input('roles', []));
+                $restore->materias()->sync($request->input('materias', []));
                 break;  
             }
         }
@@ -82,8 +88,8 @@ class UserController extends Controller
             $user->save();
             $user->roles()->sync($request->input('roles', []));
             $user->materias()->sync($request->input('materias', []));
-            return redirect()->route('users.index');
         }
+        return redirect()->route('users.index');
          
     }
 
