@@ -1,5 +1,5 @@
 Documento de vision general
-- Declaracion de la vision.
+- Declaracion de la vision - HECHO
 - Modelo de casos de uso.
 Documento de requisitos
 - Vision actualizada.
