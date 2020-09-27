@@ -66,7 +66,8 @@ Editar {{$user->name}}
                             <label class="col-3 col-form-label-lg h3" for="password">Contraseña</label>
                             <div class="col-9">
                                 <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                    id="password" name="password" placeholder="Ingrese el password del usuario">
+                                    id="password" name="password" placeholder="Ingrese el password del usuario"
+                                    value="{{ old('password', isset($user) ? $user->password : '') }}">
                                 @error('password')
                                 <small id="error" class="px-2 form-text" style="color: red">{{$message}}</small>
                                 @enderror

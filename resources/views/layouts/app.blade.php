@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', 'BitNet')</title>
+    <link rel="icon" href="{!! asset('img/logo.svg') !!}" />
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
