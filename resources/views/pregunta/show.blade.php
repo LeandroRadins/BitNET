@@ -110,7 +110,7 @@
                 <div class="col px-0 shadow-xs">
                     <div class="card border-0 rounded-0">
                         <div class="d-flex pb-0 pl-3 pr-0 pt-3">
-                            <div class="circle bg-secondary">
+                            <div class="circle bg-success">
                                 <span class="initials text-uppercase">{{substr($respuesta->autor->name, 0, 1)}}</span>
                               </div>
                             {{-- <img class="rounded-pill" width="50px" height="50px"

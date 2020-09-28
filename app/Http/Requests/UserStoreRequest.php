@@ -52,7 +52,7 @@ class UserStoreRequest extends FormRequest
             'email.unique' => 'Debe ingresar un email valido',
             'fechaNac.required' => 'Debe ingresar una fecha valida',
             // 'fechaNac.date' => 'Debe ingresar una fecha valida',
-            'password.required' => 'Debe ingresar una contraseña re loca',
+            'password.required' => 'Debe ingresar una contraseña',
         ];
     }
 }
