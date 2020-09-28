@@ -28,7 +28,6 @@ class UserStoreRequest extends FormRequest
                 return [
                     'name' => 'required',
                     'email' => 'required|email|unique:users,email,NULL,id,deleted_at,NULL',
-                    //'email' => 'required|email|unique:users',
                     'password' => 'required',
                 ];
             case 'PUT':
@@ -51,8 +50,7 @@ class UserStoreRequest extends FormRequest
             'email.email' => 'Debe ingresar un email valido',
             'email.unique' => 'Debe ingresar un email valido',
             'fechaNac.required' => 'Debe ingresar una fecha valida',
-            // 'fechaNac.date' => 'Debe ingresar una fecha valida',
-            'password.required' => 'Debe ingresar una contraseña',
+            'password.required' => 'Debe ingresar una contraseña valida',
         ];
     }
 }

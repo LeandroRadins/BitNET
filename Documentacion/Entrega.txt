@@ -1,0 +1,12 @@
+Documento de vision general
+- Declaracion de la vision - HECHO
+- Modelo de casos de uso.
+Documento de requisitos
+- Vision actualizada.
+- Casos de uso.
+- Modelo de Dominio
+- DSS.
+Documento de diseño
+- DSD.
+- Diagrama de clases (Cardinalidad y metodos).
+- Pantallas.
