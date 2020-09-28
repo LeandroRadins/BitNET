@@ -83,6 +83,7 @@
 
                             </div>
                         </div>
+                        @if (auth()->user()->hasRole('profesor'))
                         <hr>
                         <div class="d-flex justify-content-between">
                             <h3 class="text-uppercase">Materias que dicta</h3>
@@ -97,9 +98,6 @@
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
-                            <p>
-                                {{ route('users.show', $user->id) }}
-                            </p>
                             <tbody>
                                 @foreach ($materias as $materia)
                                 <tr>
@@ -131,6 +129,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        @endif
                     </div>
                 </div>
             </div>
